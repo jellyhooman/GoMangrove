@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 208576772}
   - component: {fileID: 208576771}
   - component: {fileID: 208576770}
+  - component: {fileID: 208576773}
   m_Layer: 5
   m_Name: btn about
   m_TagString: Untagged
@@ -148,15 +149,15 @@ RectTransform:
   m_GameObject: {fileID: 208576768}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 68.42956}
-  m_LocalScale: {x: 0.009794319, y: 0.009794319, z: 0.009259259}
+  m_LocalScale: {x: 0.009794318, y: 0.009794318, z: 0.009259259}
   m_Children: []
   m_Father: {fileID: 1742114408}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.4025, y: 3.979}
-  m_SizeDelta: {x: 60, y: 60}
+  m_AnchoredPosition: {x: 9.402499, y: 3.979004}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &208576770
 MonoBehaviour:
@@ -237,6 +238,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 208576768}
   m_CullTransparentMesh: 0
+--- !u!95 &208576773
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208576768}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1ae2d116b2b637c41b9f533c98300d1b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &272688631
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,6 +268,8 @@ GameObject:
   - component: {fileID: 272688632}
   - component: {fileID: 272688634}
   - component: {fileID: 272688633}
+  - component: {fileID: 272688636}
+  - component: {fileID: 272688635}
   m_Layer: 5
   m_Name: slide
   m_TagString: Untagged
@@ -271,8 +293,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 9.402649, y: 2.533}
-  m_SizeDelta: {x: 86.5, y: 475.629}
+  m_AnchoredPosition: {x: 9.402649, y: 4.721}
+  m_SizeDelta: {x: 86.5, y: 28.805}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &272688633
 MonoBehaviour:
@@ -310,6 +332,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 272688631}
   m_CullTransparentMesh: 0
+--- !u!95 &272688635
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272688631}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1ae2d116b2b637c41b9f533c98300d1b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &272688636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272688631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7983ff80f5fad34ba3de338bcef24f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &470856792
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,7 +667,40 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 575506686}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 272688635}
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: btn_about
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 272688635}
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: slide_setting_mirror
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 272688635}
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: slide_setting
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &575506686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -802,6 +888,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1120187722}
   m_CullTransparentMesh: 0
+--- !u!1 &1245123169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1245123171}
+  - component: {fileID: 1245123170}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1245123170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245123169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7983ff80f5fad34ba3de338bcef24f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1245123171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245123169}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.001218, y: 1.6355417, z: 394.9061}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1536876850
 GameObject:
   m_ObjectHideFlags: 0
