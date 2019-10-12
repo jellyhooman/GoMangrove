@@ -248,7 +248,7 @@ Animator:
   m_GameObject: {fileID: 208576768}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1ae2d116b2b637c41b9f533c98300d1b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 55f5273720ff2f0479420f3f3ce6aa32, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -294,7 +294,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 9.402649, y: 4.721}
-  m_SizeDelta: {x: 86.5, y: 28.805}
+  m_SizeDelta: {x: 86.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &272688633
 MonoBehaviour:
@@ -676,10 +676,10 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: btn_about
+          m_StringArgument: slide_setting_mirror
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 272688635}
+      - m_Target: {fileID: 208576773}
         m_MethodName: Play
         m_Mode: 5
         m_Arguments:
@@ -687,7 +687,29 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: slide_setting_mirror
+          m_StringArgument: btn_about_mirror
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1120187727}
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: btn_music_mirror
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1570411922}
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: btn_suara_mirror
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 272688635}
@@ -699,6 +721,39 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: slide_setting
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 208576773}
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: btn_about
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1120187727}
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: btn_music
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1570411922}
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: btn_suara
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &575506686
@@ -783,6 +838,7 @@ GameObject:
   - component: {fileID: 1120187726}
   - component: {fileID: 1120187725}
   - component: {fileID: 1120187724}
+  - component: {fileID: 1120187727}
   m_Layer: 5
   m_Name: btn musik
   m_TagString: Untagged
@@ -807,7 +863,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 9.4025, y: 2.85}
-  m_SizeDelta: {x: 60, y: 60}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1120187724
 MonoBehaviour:
@@ -888,6 +944,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1120187722}
   m_CullTransparentMesh: 0
+--- !u!95 &1120187727
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120187722}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f98f795240f7d4646a35e5cd97ce6fad, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1245123169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,6 +1084,7 @@ GameObject:
   - component: {fileID: 1570411921}
   - component: {fileID: 1570411920}
   - component: {fileID: 1570411919}
+  - component: {fileID: 1570411922}
   m_Layer: 5
   m_Name: btn suara
   m_TagString: Untagged
@@ -1033,7 +1109,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 9.4025, y: 1.738}
-  m_SizeDelta: {x: 60, y: 60}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1570411919
 MonoBehaviour:
@@ -1114,6 +1190,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570411917}
   m_CullTransparentMesh: 0
+--- !u!95 &1570411922
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570411917}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8a6913e8c6b32b943b889216c939e277, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1742114407
 GameObject:
   m_ObjectHideFlags: 0
