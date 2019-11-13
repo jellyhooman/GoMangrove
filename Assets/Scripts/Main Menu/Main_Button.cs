@@ -92,5 +92,20 @@ public class Main_Button : MonoBehaviour
     {
         Application.LoadLevel("Menu Konten");
     }
-    
+
+    public void btnToMateri()
+    {
+        Application.LoadLevel("ListMateriScene");
+    }
+
+    public void btnToSimulasi()
+    {
+        Application.LoadLevel("LevelSimulasi");
+    }
+
+    public void btnToLevel1()
+    {
+        Application.LoadLevel("Level1");
+    }
+
 }

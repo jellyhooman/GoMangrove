@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
-    public GameObject satu, dua, tiga, satuHitam, duaHitam, tigaHitam;
+    public GameObject satu, dua, tiga, satuHitam, duaHitam, tigaHitam,
+        btnFinish, btn;
 
     Vector2 satuInitialPos, duaInitialPos, tigaInitialPos;
 
@@ -13,11 +15,20 @@ public class Manager : MonoBehaviour
     int score1 = 0;
     int score2 = 0;
 
-    void Start()
+    public void Start()
     {
         satuInitialPos = satu.transform.position;
         duaInitialPos = dua.transform.position;
         tigaInitialPos = tiga.transform.position;
+        btn = Instantiate(btnFinish) as GameObject;
+        btnFinish.SetActive(true);
+        btn.transform.SetParent(btnFinish.transform.parent, false);
+        
+    }
+
+    public void Update()
+    {
+        Finish();
     }
 
     public void DragSatu()
@@ -105,10 +116,16 @@ public class Manager : MonoBehaviour
         }
     }
 
-    public void btnSelesai()
+    public void Finish()
     {
         int hasil = score1 + score2;
-        Debug.Log(hasil);
+        btn.gameObject.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(hasil));
+    }
+
+    public void OnButtonClick(int score)
+    {
+        PlayerPrefs.SetInt("scoreLvl1", score);
+        Application.LoadLevel("LevelSimulasi");
     }
 
 }
