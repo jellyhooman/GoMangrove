@@ -5,22 +5,33 @@ using UnityEngine.UI;
 
 public class Main_Button : MonoBehaviour
 {
+    //Setting Right
     public Image changeIconMusic, changeIconSound;
-
     public Sprite iconMusicOn, iconSoundOn, iconMusicOff, iconSoundOff;
 
     private bool conMusic = true;
     private bool conSound = true;
 
-    void Start()
-    {
-        
-    }
+    //Setting Left
+    public Image slideBot;
+    public Sprite iconSlideBot, iconSlideTop;
 
-    // Update is called once per frame
-    void Update()
+    private bool conSlide = true;
+
+    //----------------------------------------------------
+
+    public void btnSlide()
     {
-        
+        if (conSlide == true)
+        {
+            slideBot.sprite = iconSlideTop;
+            conSlide = false;
+        }
+        else if (conSlide == false)
+        {
+            slideBot.sprite = iconSlideBot;
+            conSlide = true;
+        }
     }
 
     public void btnMusic()
@@ -50,4 +61,36 @@ public class Main_Button : MonoBehaviour
         }
     }
 
+    //Button Back
+    public void btnBackToMainMenu()
+    {
+        Application.LoadLevel("Main Menu");
+    }
+
+    public void btnBackToAkun()
+    {
+        Application.LoadLevel("Akun Scene");
+    }
+
+    //Button Next
+    public void btnNextToAkun()
+    {
+        Application.LoadLevel("Akun Scene");
+    }
+
+    public void btnNextToNilaiLatihan()
+    {
+        Application.LoadLevel("Nilai Latihan Scene");
+    }
+
+    public void btnNextToNilaiSimulasi()
+    {
+        Application.LoadLevel("Nilai Latihan Simulasi");
+    }
+
+    public void btnStart()
+    {
+        Application.LoadLevel("Menu Konten");
+    }
+    
 }
