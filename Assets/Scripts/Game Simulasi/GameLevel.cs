@@ -7,6 +7,8 @@ public class GameLevel : MonoBehaviour
 {
     public Button btnLevel1, btnLevel2, btnLevel3;
 
+    public Text hasilA;
+
     public int nilaiS_1, nilaiS_2, nilaiS_3;
     bool conLevel = false;
     bool conLeve2 = false;
@@ -20,7 +22,7 @@ public class GameLevel : MonoBehaviour
         resultScore1 = PlayerPrefs.GetInt("scoreLvl1");
         Debug.Log(resultScore1);
         btnLevel2.interactable = false;
-        
+        hasilA.text = resultScore1.ToString();
         LevelGame();
     }
 

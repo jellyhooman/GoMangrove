@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Resources/Scenes/Level1.unity
     guid: 75e10caccd7b7ae468f8acb9d6c9041a
   - enabled: 1
+    path: Assets/Resources/Scenes/ListMateriScene.unity
+    guid: 00086922344d0744a92b0470dc0fd307
+  - enabled: 1
     path: Assets/Resources/Scenes/Menu Konten.unity
     guid: 5991845ce46ac4f4d80f0ccba79b5abc
   - enabled: 1

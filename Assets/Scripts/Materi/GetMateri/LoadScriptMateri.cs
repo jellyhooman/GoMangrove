@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class LoadScriptMateri : MonoBehaviour
 {
-    public Text username;
-    public Text post;
+    public Text judul;
+    public Text isi;
 
     public GameObject isiMateriObject;
     public ListMateriControl isiMateriScript;
 
     public void Start()
     {
-        username.text = PlayerPrefs.GetString("username");
-        post.text = PlayerPrefs.GetString("post");
+        judul.text = PlayerPrefs.GetString("judul_materi");
+        isi.text = PlayerPrefs.GetString("isi_materi");
     }
 }

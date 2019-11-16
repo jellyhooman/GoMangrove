@@ -11,6 +11,13 @@ public class SceneLoader : MonoBehaviour
     private float timeRemaining = 0;
     private float timeMax = 3f;
 
+    string id_siswa;
+
+    public void Start()
+    {
+        id_siswa = PlayerPrefs.GetString("id_siswa");
+    }
+
     public void Update()
     {
         slider.value = CalculateTimer();
@@ -18,6 +25,7 @@ public class SceneLoader : MonoBehaviour
 
         if (timeRemaining > 3)
         {
+            PlayerPrefs.SetString("id_siswa", id_siswa);
             SceneManager.LoadScene("Main Menu");
         }
     }

@@ -19,7 +19,7 @@ public class Manager : MonoBehaviour
     {
         satuInitialPos = satu.transform.position;
         duaInitialPos = dua.transform.position;
-        tigaInitialPos = tiga.transform.position;
+        //tigaInitialPos = tiga.transform.position;
         btn = Instantiate(btnFinish) as GameObject;
         btnFinish.SetActive(true);
         btn.transform.SetParent(btnFinish.transform.parent, false);
@@ -41,17 +41,17 @@ public class Manager : MonoBehaviour
         dua.transform.position = Input.mousePosition;
     }
 
-    public void DragTiga()
-    {
-        tiga.transform.position = Input.mousePosition;
-    }
+    //public void DragTiga()
+    //{
+    //    tiga.transform.position = Input.mousePosition;
+    //}
 
     public void DropSatu() 
     {
         Debug.Log("drop");
         float Distance1 = Vector3.Distance(satu.transform.position, satuHitam.transform.position);
         float Distance2 = Vector3.Distance(satu.transform.position, duaHitam.transform.position);
-        float Distance3 = Vector3.Distance(satu.transform.position, tigaHitam.transform.position);
+        //float Distance3 = Vector3.Distance(satu.transform.position, tigaHitam.transform.position);
 
         if (Distance1 < 50)
         {
@@ -63,11 +63,11 @@ public class Manager : MonoBehaviour
             satu.transform.position = duaHitam.transform.position;
             score1 = 0;
         }
-        else if (Distance3 < 50)
-        {
-            satu.transform.position = tigaHitam.transform.position;
-            score1 = 0;
-        }
+        //else if (Distance3 < 50)
+        //{
+        //    satu.transform.position = tigaHitam.transform.position;
+        //    score1 = 0;
+        //}
         else
         {
             satu.transform.position = satuInitialPos;
@@ -79,7 +79,7 @@ public class Manager : MonoBehaviour
         Debug.Log("drop");
         float Distance1 = Vector3.Distance(dua.transform.position, satuHitam.transform.position);
         float Distance2 = Vector3.Distance(dua.transform.position, duaHitam.transform.position);
-        float Distance3 = Vector3.Distance(dua.transform.position, tigaHitam.transform.position);
+        //float Distance3 = Vector3.Distance(dua.transform.position, tigaHitam.transform.position);
 
         if (Distance1 < 50)
         {
@@ -92,11 +92,11 @@ public class Manager : MonoBehaviour
             dua.transform.position = duaHitam.transform.position;
             score2 = 20;
         }
-        else if (Distance3 < 50)
-        {
-            dua.transform.position = tigaHitam.transform.position;
-            score2 = 0;
-        }
+        //else if (Distance3 < 50)
+        //{
+        //    dua.transform.position = tigaHitam.transform.position;
+        //    score2 = 0;
+        //}
         else
         {
             dua.transform.position = duaInitialPos;
