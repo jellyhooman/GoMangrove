@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/Resources/Scenes/Login Scene.unity
+    guid: 0c4f64f5feff60944b798167093bda3e
   - enabled: 1
     path: Assets/Resources/Scenes/Loading Screen.unity
     guid: 654dc335e269112408f0ce640f8ea075
@@ -18,9 +21,6 @@ EditorBuildSettings:
     path: Assets/Resources/Scenes/Akun Scene.unity
     guid: 744bf857840554140ad6f92afc92e66e
   - enabled: 1
-    path: Assets/Resources/Scenes/Login Scene.unity
-    guid: 0c4f64f5feff60944b798167093bda3e
-  - enabled: 1
     path: Assets/Resources/Scenes/Nilai Simulasi Scene.unity
     guid: cd3b990e4bfbfe64a9b34a9119134465
   - enabled: 1
@@ -29,6 +29,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Resources/Scenes/Level1.unity
     guid: 75e10caccd7b7ae468f8acb9d6c9041a
+  - enabled: 1
+    path: Assets/Resources/Scenes/ExLatihan.unity
+    guid: 84ba2d639004c8248bb6edf0f75d9b64
+  - enabled: 1
+    path: Assets/Resources/Scenes/ListLatihanScene.unity
+    guid: 837cfcf70293a774d90b7f999a39af92
   - enabled: 1
     path: Assets/Resources/Scenes/ListMateriScene.unity
     guid: 00086922344d0744a92b0470dc0fd307

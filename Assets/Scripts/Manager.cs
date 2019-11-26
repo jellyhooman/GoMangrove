@@ -14,21 +14,32 @@ public class Manager : MonoBehaviour
 
     int score1 = 0;
     int score2 = 0;
+    bool firstState = true;
+    string Url;
+
+    string id_murid;
+
+    public int hasil;
 
     public void Start()
     {
+        Url = "http://gomangrove.com/backend/api/v1/postNilaiSimulasi";
         satuInitialPos = satu.transform.position;
         duaInitialPos = dua.transform.position;
+
+        id_murid = PlayerPrefs.GetString("id_murid");
+
         //tigaInitialPos = tiga.transform.position;
         btn = Instantiate(btnFinish) as GameObject;
         btnFinish.SetActive(true);
         btn.transform.SetParent(btnFinish.transform.parent, false);
-        
+        Finish();
     }
 
     public void Update()
     {
-        Finish();
+        hasil = score1 + score2;
+        Debug.Log(hasil);
     }
 
     public void DragSatu()
@@ -118,14 +129,24 @@ public class Manager : MonoBehaviour
 
     public void Finish()
     {
-        int hasil = score1 + score2;
         btn.gameObject.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(hasil));
     }
 
     public void OnButtonClick(int score)
     {
-        PlayerPrefs.SetInt("scoreLvl1", score);
+        firstState = false;
         Application.LoadLevel("LevelSimulasi");
+        PostData(id_murid, "Level Simulasi 1", score);
+    }
+
+    void PostData(string id_murid, string nama_simulasi, int score)
+    {
+        WWWForm dataParameters = new WWWForm();
+        dataParameters.AddField("id_murid", id_murid);
+        dataParameters.AddField("nama_simulasi", nama_simulasi);
+        dataParameters.AddField("score_simulasi", score);
+        WWW www = new WWW(Url, dataParameters);
+        StartCoroutine("PostdataEnumerator", Url);
     }
 
 }

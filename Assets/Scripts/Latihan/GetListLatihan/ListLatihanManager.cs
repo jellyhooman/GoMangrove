@@ -40,14 +40,13 @@ public class ListLatihanManager : MonoBehaviour
                 button.GetComponent<ListLatihan>().setText(mGetLatihan.getLatihan[i].nama_latihan);
                 button.transform.SetParent(buttonTemplate.transform.parent, false);
 
-                Debug.Log(i);
-
-                //string mId = getMateri.getMateri[i].id;
+                
+                string mId_latihan = mGetLatihan.getLatihan[i].idLatihan;
                 //string mJudul = getMateri.getMateri[i].judul_materi;
                 //string mIsi = getMateri.getMateri[i].isi_materi;
 
-                //button.gameObject.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(mId, mJudul, mIsi));
-                button.gameObject.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(i));
+                button.gameObject.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(mId_latihan));
+
             }
         }
         else
@@ -56,20 +55,9 @@ public class ListLatihanManager : MonoBehaviour
         }
     }
 
-    public void OnButtonClick(int i)
+    public void OnButtonClick(string id_latihan)
     {
-        //PlayerPrefs.SetString("id_materi", mId);
-        //PlayerPrefs.SetString("judul_materi", mJudul);
-        //PlayerPrefs.SetString("isi_materi", mIsi);
-        //Application.LoadLevel("ListGetMateriScene");
-        Debug.Log(i);
+        PlayerPrefs.SetString("id_latihan", id_latihan);
+        Application.LoadLevel("ExLatihan");
     }
-
-    //public void OnButtonClick(string mId, string mJudul, string mIsi)
-    //{
-    //    PlayerPrefs.SetString("id_materi", mId);
-    //    PlayerPrefs.SetString("judul_materi", mJudul);
-    //    PlayerPrefs.SetString("isi_materi", mIsi);
-    //    Application.LoadLevel("ListGetMateriScene");
-    //}
 }

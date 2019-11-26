@@ -35,11 +35,11 @@ public class LoginManager : MonoBehaviour
             loginO = JsonUtility.FromJson<Login>(www.text);
             
             bool statusLogin = loginO.login;
-            string id_siswa = loginO.id;
+            string id_murid = loginO.id;
             
             if (statusLogin == true)
             {
-                PlayerPrefs.SetString("id_siswa", id_siswa);
+                PlayerPrefs.SetString("id_murid", id_murid);
                 Application.LoadLevel("Main Menu");
             }
             else

@@ -956,6 +956,7 @@ MonoBehaviour:
   btn: {fileID: 0}
   check1: {fileID: 0}
   check2: {fileID: 0}
+  hasil: 0
 --- !u!4 &2087913624
 Transform:
   m_ObjectHideFlags: 0

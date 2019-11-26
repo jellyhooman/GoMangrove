@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using LitJson;
 
 public class GameLevel : MonoBehaviour
 {
@@ -16,14 +17,40 @@ public class GameLevel : MonoBehaviour
 
     int resultScore1;
 
+    JsonData stateData;
+
+    GetNilaiSimulasi mGetNilaiSimulasi;
+    string id_murid;
+
+    int sLvl1;
+
     // Start is called before the first frame update
     void Start()
     {
-        resultScore1 = PlayerPrefs.GetInt("scoreLvl1");
-        Debug.Log(resultScore1);
+        id_murid = PlayerPrefs.GetString("id_murid");
         btnLevel2.interactable = false;
-        hasilA.text = resultScore1.ToString();
-        LevelGame();
+        StartCoroutine(RetriveData());
+    }
+
+    // Sample JSON for the following script has attached.
+    IEnumerator RetriveData()
+    {
+        string url = "http://gomangrove.com/backend/api/v1/getNilaiSimulasi?id_murid=" + id_murid;
+        WWW www = new WWW(url);
+        yield return www;
+        
+        if (www.error == null)
+        {
+            mGetNilaiSimulasi = JsonUtility.FromJson<GetNilaiSimulasi>("{\"nilaiSimulasi\":" + www.text + "}");
+            sLvl1 = mGetNilaiSimulasi.nilaiSimulasi[0].score_simulasi;
+            hasilA.text = sLvl1.ToString();
+
+            LevelGame(sLvl1);
+        }
+        else
+        {
+            Debug.Log("ERROR: " + www.error);
+        }
     }
 
     // Update is called once per frame
@@ -32,10 +59,10 @@ public class GameLevel : MonoBehaviour
 
     }
 
-    public void LevelGame()
+    public void LevelGame(int score1)
     {
 
-        if (resultScore1 == 0 || resultScore1 == null)
+        if (score1 == 0 || score1 == null)
         {
             btnLevel2.interactable = false;
         }
@@ -43,10 +70,12 @@ public class GameLevel : MonoBehaviour
         {
             btnLevel2.interactable = true;
         }
+        
     }
 
     public void BtnLevel2()
     {
         Debug.Log("asdasd");
     }
+
 }

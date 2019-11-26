@@ -34,8 +34,10 @@ public class GetMateri
     public Materi[] arrayMateri;
 }
 
+
+//GET SOAL
 [System.Serializable]
-public class Soal
+public class soal
 {
     public string idSoal;
     public string idJawaban;
@@ -45,18 +47,20 @@ public class Soal
     public string jawaban_3;
     public string jawaban_4;
     public string jawaban_benar;
-    public string point;
+    public int point;
 }
 
+//GET LATIHAN
 [System.Serializable]
 public class Latihan
 {
     public string idLatihan;
     public string nama_latihan;
-    public List<Soal> getSoal;
-    public Soal[] arraySoal;
+    public List<soal> soal = new List<soal>();
+    public soal[] arraySoal;
 }
 
+//LIST GET LATIHAN
 [System.Serializable]
 public class GetLatihan
 {
@@ -64,5 +68,31 @@ public class GetLatihan
     public Latihan[] arrayLatihan;
 }
 
+//POST NILAI SIMULASI
+[System.Serializable]
+public class PostNilaiSimulasi
+{
+    public string id_murid;
+    public string nama_simulasi;
+    public string score_simulasi;
+    
+}
+
+//GET NILAI SIMULASI
+[System.Serializable]
+public class NilaiSimulasi
+{
+    public string id;
+    public string nama_simulasi;
+    public int score_simulasi;
+    public string tgl_simulasi;
+}
+
+//GET NILAI SIMULASI
+[System.Serializable]
+public class GetNilaiSimulasi
+{
+    public List<NilaiSimulasi> nilaiSimulasi;
+}
 
 

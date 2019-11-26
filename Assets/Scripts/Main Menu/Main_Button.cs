@@ -9,7 +9,7 @@ public class Main_Button : MonoBehaviour
     public Image changeIconMusic, changeIconSound;
     public Sprite iconMusicOn, iconSoundOn, iconMusicOff, iconSoundOff;
 
-    string id_siswa;
+    string id_murid;
 
     private bool conMusic = true;
     private bool conSound = true;
@@ -24,7 +24,7 @@ public class Main_Button : MonoBehaviour
 
     public void Start()
     {
-        id_siswa = PlayerPrefs.GetString("id_siswa");
+        id_murid = PlayerPrefs.GetString("id_murid");
     }
 
     public void btnSlide()
@@ -97,26 +97,31 @@ public class Main_Button : MonoBehaviour
 
     public void btnStart()
     {
-        PlayerPrefs.SetString("id_siswa", id_siswa);
+        PlayerPrefs.SetString("id_murid", id_murid);
         Application.LoadLevel("Menu Konten");
     }
 
     public void btnToMateri()
     {
-        PlayerPrefs.SetString("id_siswa", id_siswa);
+        PlayerPrefs.SetString("id_murid", id_murid);
         Application.LoadLevel("ListMateriScene");
     }
 
     public void btnToSimulasi()
     {
-        PlayerPrefs.SetString("id_siswa", id_siswa);
+        PlayerPrefs.SetString("id_murid", id_murid);
         Application.LoadLevel("LevelSimulasi");
     }
 
     public void btnToLevel1()
     {
-        PlayerPrefs.SetString("id_siswa", id_siswa);
+        PlayerPrefs.SetString("id_murid", id_murid);
         Application.LoadLevel("Level1");
+    }
+
+    public void btnToLatihan()
+    {
+        Application.LoadLevel("ListLatihanScene");
     }
 
 }
