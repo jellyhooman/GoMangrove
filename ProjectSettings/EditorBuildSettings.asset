@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Resources/Scenes/LevelSimulasi.unity
     guid: 6d77071f3455e834e9a48b927b34d776
   - enabled: 1
-    path: Assets/Resources/Scenes/Level1.unity
+    path: Assets/Resources/Scenes/Level Simulasi/Level1.unity
     guid: 75e10caccd7b7ae468f8acb9d6c9041a
   - enabled: 1
     path: Assets/Resources/Scenes/ExLatihan.unity

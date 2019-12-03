@@ -4,19 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using LitJson;
 
-public class Level1_Manager : MonoBehaviour
+public class Level2_Manager : MonoBehaviour
 {
-    public GameObject ular, ikanKecil, ikanBesar, serasah, burung;
-    public GameObject dropUlar, dropIkanKecil, dropIkanBesar, dropSerasah, dropBurung;
+    public GameObject kepiting, ikanKecil, ikanBesar, biyawak, dekomposer, burung;
+    public GameObject dropKepiting, dropIkanKecil, dropIkanBesar, dropBiyawak, dropDekomposer, dropBurung;
     public GameObject btnSelesai;
     GameObject btn;
 
-    Vector2 ularInitialPos, ikanKecilInitialPos, ikanBesarInitialPos, serasahInitialPos, burungInitialPos;
+    Vector2 kepitingInitialPos, ikanKecilInitialPos, ikanBesarInitialPos, biyawakInitialPos, dekomposerInitialPos, burungInitialPos;
 
-    int scoreUlar, scoreIkanKecil, scoreIkanBesar, scoreSerasah, scoreBurung = 0;
+    int scorekepiting, scoreIkanKecil, scoreIkanBesar, scoreBiyawak, scoreDekomposer, scoreBurung = 0;
     int hasilScore;
 
-    string codeUlar, codeIkanK, codeIkanB, codeSerasah, codeBurung;
+    string codeKepiting, codeIkanK, codeIkanB, codeBiyawak, codeDekomposer, codeBurung;
     string Url = "http://gomangrove.com/backend/api/v1/postNilaiSimulasi";
     string id_murid;
 
@@ -27,16 +27,18 @@ public class Level1_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        codeUlar = "codeUlar";
+        codeKepiting = "codeKepiting";
         codeIkanK = "codeIkanK";
         codeIkanB = "codeIkanB";
-        codeSerasah = "codeSerasah";
+        codeBiyawak = "codeBiyawak";
+        codeDekomposer = "codeDekomposer";
         codeBurung = "codeBurung";
 
-        ularInitialPos = ular.transform.position;
+        kepitingInitialPos = kepiting.transform.position;
         ikanKecilInitialPos = ikanKecil.transform.position;
         ikanBesarInitialPos = ikanBesar.transform.position;
-        serasahInitialPos = serasah.transform.position;
+        biyawakInitialPos = biyawak.transform.position;
+        dekomposerInitialPos = dekomposer.transform.position;
         burungInitialPos = burung.transform.position;
 
         id_murid = PlayerPrefs.GetString("id_murid");
@@ -58,9 +60,9 @@ public class Level1_Manager : MonoBehaviour
         }
     }
 
-    public void DragUlar()
+    public void DragKepiting()
     {
-        ular.transform.position = Input.mousePosition;
+        kepiting.transform.position = Input.mousePosition;
     }
 
     public void DragIkanKecil()
@@ -73,11 +75,16 @@ public class Level1_Manager : MonoBehaviour
         ikanBesar.transform.position = Input.mousePosition;
     }
 
-    public void DragSerasah()
+    public void DragBiyawak()
     {
-        serasah.transform.position = Input.mousePosition;
+        biyawak.transform.position = Input.mousePosition;
     }
-    
+
+    public void DragDekomposer()
+    {
+        dekomposer.transform.position = Input.mousePosition;
+    }
+
     public void DragBurung()
     {
         burung.transform.position = Input.mousePosition;
@@ -85,9 +92,9 @@ public class Level1_Manager : MonoBehaviour
 
     void RawScore(string initial, int value)
     {
-        if (initial == codeUlar)
+        if (initial == codeKepiting)
         {
-            scoreUlar = value;
+            scorekepiting = value;
         }
         else if (initial == codeIkanK)
         {
@@ -97,9 +104,13 @@ public class Level1_Manager : MonoBehaviour
         {
             scoreIkanBesar = value;
         }
-        else if (initial == codeSerasah)
+        else if (initial == codeBiyawak)
         {
-            scoreSerasah = value;
+            scoreBiyawak = value;
+        }
+        else if (initial == codeDekomposer)
+        {
+            scoreDekomposer = value;
         }
         else if (initial == codeBurung)
         {
@@ -107,18 +118,19 @@ public class Level1_Manager : MonoBehaviour
         }
     }
 
-    void RawDropObject(Vector2 initialVector ,GameObject initial, string codeName, int scoreUlar, int scoreIkanK, int scoreIkanB, int scoreSerasah, int scoreBurung)
+    void RawDropObject(Vector2 initialVector, GameObject initial, string codeName, int scoreKepiting, int scoreIkanK, int scoreIkanB, int scoreBiyawak, int scoreDekomposer, int scoreBurung)
     {
-        float Distance1 = Vector3.Distance(initial.transform.position, ular.transform.position);
+        float Distance1 = Vector3.Distance(initial.transform.position, dropKepiting.transform.position);
         float Distance2 = Vector3.Distance(initial.transform.position, dropIkanKecil.transform.position);
         float Distance3 = Vector3.Distance(initial.transform.position, dropIkanBesar.transform.position);
-        float Distance4 = Vector3.Distance(initial.transform.position, dropSerasah.transform.position);
-        float Distance5 = Vector3.Distance(initial.transform.position, dropBurung.transform.position);
+        float Distance4 = Vector3.Distance(initial.transform.position, dropBiyawak.transform.position);
+        float Distance5 = Vector3.Distance(initial.transform.position, dropDekomposer.transform.position);
+        float Distance6 = Vector3.Distance(initial.transform.position, dropBurung.transform.position);
 
         if (Distance1 < 50)
         {
-            initial.transform.position = dropUlar.transform.position;
-            RawScore(codeName, scoreUlar);
+            initial.transform.position = dropKepiting.transform.position;
+            RawScore(codeName, scoreKepiting);
         }
         else if (Distance2 < 50)
         {
@@ -133,10 +145,15 @@ public class Level1_Manager : MonoBehaviour
         }
         else if (Distance4 < 50)
         {
-            initial.transform.position = dropSerasah.transform.position;
-            RawScore(codeName, scoreSerasah);
+            initial.transform.position = dropBiyawak.transform.position;
+            RawScore(codeName, scoreBiyawak);
         }
         else if (Distance5 < 50)
+        {
+            initial.transform.position = dropDekomposer.transform.position;
+            RawScore(codeName, scoreDekomposer);
+        }
+        else if (Distance6 < 50)
         {
             initial.transform.position = dropBurung.transform.position;
             RawScore(codeName, scoreBurung);
@@ -147,34 +164,39 @@ public class Level1_Manager : MonoBehaviour
         }
     }
 
-    public void DropUlar()
+    public void DropKepiting()
     {
-        RawDropObject(ularInitialPos, ular, codeUlar, 10, 0, 0, 0, 0);
+        RawDropObject(kepitingInitialPos, kepiting, codeKepiting, 10, 0, 0, 0, 0, 0);
     }
 
     public void DropIkanKecil()
     {
-        RawDropObject(ikanKecilInitialPos, ikanKecil, codeIkanK, 0, 10, 0, 0, 0);
+        RawDropObject(ikanKecilInitialPos, ikanKecil, codeIkanK, 0, 10, 0, 0, 0, 0);
     }
 
     public void DropIkanBesar()
     {
-        RawDropObject(ikanBesarInitialPos, ikanBesar, codeIkanB, 0, 0, 10, 0, 0);
+        RawDropObject(ikanBesarInitialPos, ikanBesar, codeIkanB, 0, 0, 10, 0, 0, 0);
     }
 
-    public void DropSerasah()
+    public void DropBiyawak()
     {
-        RawDropObject(serasahInitialPos, serasah, codeSerasah, 0, 0, 0, 10, 0);
+        RawDropObject(biyawakInitialPos, biyawak, codeBiyawak, 0, 0, 0, 10, 0, 0);
+    }
+
+    public void DropDekomposer()
+    {
+        RawDropObject(dekomposerInitialPos, dekomposer, codeDekomposer, 0, 0, 0, 0, 10, 0);
     }
 
     public void DropBurung()
     {
-        RawDropObject(burungInitialPos, burung, codeBurung, 0, 0, 0, 0, 10);
+        RawDropObject(burungInitialPos, burung, codeBurung, 0, 0, 0, 0, 0, 10);
     }
 
     public void Finish()
     {
-        hasilScore = scoreUlar + scoreIkanKecil + scoreIkanBesar + scoreSerasah + scoreBurung;
+        hasilScore = scorekepiting + scoreIkanKecil + scoreIkanBesar + scoreBiyawak + scoreDekomposer + scoreBurung;
         btn.gameObject.GetComponent<Button>().onClick.AddListener(() => ClickButtonFinish(hasilScore));
     }
 

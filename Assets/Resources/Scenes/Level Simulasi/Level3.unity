@@ -870,7 +870,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ULAR
+  m_Text: UDANG
 --- !u!222 &103884863
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1196,7 +1196,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2087913625}
+        - m_Target: {fileID: 2087913623}
           m_MethodName: DragBurung
           m_Mode: 1
           m_Arguments:
@@ -1211,7 +1211,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2087913625}
+        - m_Target: {fileID: 2087913623}
           m_MethodName: DropBurung
           m_Mode: 1
           m_Arguments:
@@ -1955,7 +1955,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ULAR
+  m_Text: SERASAH
 --- !u!222 &346208085
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2021,7 +2021,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2087913625}
+        - m_Target: {fileID: 2087913623}
           m_MethodName: DragIkanBesar
           m_Mode: 1
           m_Arguments:
@@ -2036,7 +2036,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2087913625}
+        - m_Target: {fileID: 2087913623}
           m_MethodName: DropIkanBesar
           m_Mode: 1
           m_Arguments:
@@ -2451,7 +2451,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2087913625}
+        - m_Target: {fileID: 2087913623}
           m_MethodName: DragKepiting
           m_Mode: 1
           m_Arguments:
@@ -2466,7 +2466,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2087913625}
+        - m_Target: {fileID: 2087913623}
           m_MethodName: DropKepiting
           m_Mode: 1
           m_Arguments:
@@ -2854,7 +2854,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2087913625}
+        - m_Target: {fileID: 2087913623}
           m_MethodName: DragBiyawak
           m_Mode: 1
           m_Arguments:
@@ -2869,7 +2869,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2087913625}
+        - m_Target: {fileID: 2087913623}
           m_MethodName: DropBiyawak
           m_Mode: 1
           m_Arguments:
@@ -4551,7 +4551,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2087913625}
+        - m_Target: {fileID: 2087913623}
           m_MethodName: DragIkanKecil
           m_Mode: 1
           m_Arguments:
@@ -4566,7 +4566,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2087913625}
+        - m_Target: {fileID: 2087913623}
           m_MethodName: DropIkanKecil
           m_Mode: 1
           m_Arguments:
@@ -7229,7 +7229,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2087913625}
+        - m_Target: {fileID: 2087913623}
           m_MethodName: DragDekomposer
           m_Mode: 1
           m_Arguments:
@@ -7244,7 +7244,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2087913625}
+        - m_Target: {fileID: 2087913623}
           m_MethodName: DropDekomposer
           m_Mode: 1
           m_Arguments:
@@ -11324,7 +11324,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2087913624}
-  - component: {fileID: 2087913625}
+  - component: {fileID: 2087913623}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -11332,21 +11332,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2087913624
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2087913622}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.24592783, y: -0.120684266, z: 713.7383}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2087913625
+--- !u!114 &2087913623
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11355,7 +11341,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2087913622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222d38c83c5325c4c9cd4e45d3ccfcc2, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f10e2fba2299e64696a5958bec550e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   kepiting: {fileID: 474252399}
@@ -11372,6 +11358,20 @@ MonoBehaviour:
   dropBurung: {fileID: 1936591235}
   btnSelesai: {fileID: 701635687}
   textTimer: {fileID: 1791281576}
+--- !u!4 &2087913624
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087913622}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.24592783, y: -0.120684266, z: 713.7383}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2091605812
 GameObject:
   m_ObjectHideFlags: 0
