@@ -47,15 +47,17 @@ public class Level1_Manager : MonoBehaviour
         Finish();
     }
 
-    // Update is called once per frame
+     //Update is called once per frame
     void Update()
     {
+        hasilScore = scoreUlar + scoreIkanKecil + scoreIkanBesar + scoreSerasah + scoreBurung;
         timeLeft -= Time.deltaTime;
         textTimer.text = ((timeLeft).ToString("0"));
         if (timeLeft < 0)
         {
             //Game OVer
         }
+        
     }
 
     public void DragUlar()
@@ -109,7 +111,7 @@ public class Level1_Manager : MonoBehaviour
 
     void RawDropObject(Vector2 initialVector ,GameObject initial, string codeName, int scoreUlar, int scoreIkanK, int scoreIkanB, int scoreSerasah, int scoreBurung)
     {
-        float Distance1 = Vector3.Distance(initial.transform.position, ular.transform.position);
+        float Distance1 = Vector3.Distance(initial.transform.position, dropUlar.transform.position);
         float Distance2 = Vector3.Distance(initial.transform.position, dropIkanKecil.transform.position);
         float Distance3 = Vector3.Distance(initial.transform.position, dropIkanBesar.transform.position);
         float Distance4 = Vector3.Distance(initial.transform.position, dropSerasah.transform.position);
@@ -174,14 +176,22 @@ public class Level1_Manager : MonoBehaviour
 
     public void Finish()
     {
-        hasilScore = scoreUlar + scoreIkanKecil + scoreIkanBesar + scoreSerasah + scoreBurung;
         btn.gameObject.GetComponent<Button>().onClick.AddListener(() => ClickButtonFinish(hasilScore));
     }
 
     void ClickButtonFinish(int score)
     {
         PostData(id_murid, "Level Simulasi 1", score);
-        Debug.Log("hasil : " + hasilScore);
+        if (score > 10)
+        {
+            PlayerPrefs.SetInt("nilai_simulasi", score);
+            Application.LoadLevel("VictoryScene");
+        } else if ( score <= 10)
+        {
+            PlayerPrefs.SetInt("nilai_simulasi", score);
+            Application.LoadLevel("FailedScene");
+        }
+        
     }
 
     void PostData(string id_murid, string nama_simulasi, int score)

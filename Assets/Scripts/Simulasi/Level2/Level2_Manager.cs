@@ -52,6 +52,7 @@ public class Level2_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        hasilScore = scorekepiting + scoreIkanKecil + scoreIkanBesar + scoreBiyawak + scoreDekomposer + scoreBurung;
         timeLeft -= Time.deltaTime;
         textTimer.text = ((timeLeft).ToString("0"));
         if (timeLeft < 0)
@@ -196,14 +197,21 @@ public class Level2_Manager : MonoBehaviour
 
     public void Finish()
     {
-        hasilScore = scorekepiting + scoreIkanKecil + scoreIkanBesar + scoreBiyawak + scoreDekomposer + scoreBurung;
         btn.gameObject.GetComponent<Button>().onClick.AddListener(() => ClickButtonFinish(hasilScore));
     }
 
     void ClickButtonFinish(int score)
     {
-        PostData(id_murid, "Level Simulasi 1", score);
-        Debug.Log("hasil : " + hasilScore);
+        PostData(id_murid, "Level Simulasi 2", score);
+        if (score > 10)
+        {
+            PlayerPrefs.SetInt("nilai_simulasi", score);
+            Application.LoadLevel("VictoryScene");
+        } else if (score < 10)
+        {
+            PlayerPrefs.SetInt("nilai_simulasi", score);
+            Application.LoadLevel("FailedScene");
+        }
     }
 
     void PostData(string id_murid, string nama_simulasi, int score)

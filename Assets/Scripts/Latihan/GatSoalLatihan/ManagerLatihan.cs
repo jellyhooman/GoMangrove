@@ -10,11 +10,12 @@ public class ManagerLatihan : MonoBehaviour
     bool stopScript = true;
 
     int arrsize;
-    int count = 0;
+    int count=0;
 
-    public Text getSoal, getJawaban1, getJawaban2, getJawaban3, getJawaban4, getJawabanB;
-
+    public Text getSoal, getJawaban1, getJawaban2, getJawaban3, getJawaban4;
+    
     GameObject btn1, btn2, btn3, btn4;
+    public GameObject btnBack;
     public GameObject btnTemp1, btnTemp2, btnTemp3, btnTemp4;
 
     JsonData stateData;
@@ -31,12 +32,15 @@ public class ManagerLatihan : MonoBehaviour
     string jawaban_4;
     string jawaban_B;
     int scoreLatihan;
+    int finalScore;
+    int test = 1;
 
     string url_post = "http://gomangrove.com/backend/api/v1/postNilaiLatihan";
 
     IEnumerator RetriveData()
     {
-        string url = "http://gomangrove.com/backend/api/v1/getLatihan?id_latihan=" +id_latihan;
+        count = count;
+        string url = "http://gomangrove.com/backend/api/v1/getLatihan?id_latihan="+id_latihan;
         WWW www = new WWW(url);
         yield return www;
         
@@ -44,9 +48,8 @@ public class ManagerLatihan : MonoBehaviour
         if(www.error == null)
         {
             mGetLatihan = JsonUtility.FromJson<Latihan>(www.text);
-            mArrayLatihan = JsonUtility.FromJson<Latihan>(www.text);
-
             arrsize = mGetLatihan.soal.Count;
+
             if (count < arrsize)
             {
                 id_soal = mGetLatihan.soal[count].idSoal;
@@ -56,13 +59,11 @@ public class ManagerLatihan : MonoBehaviour
                 jawaban_3 = mGetLatihan.soal[count].jawaban_3;
                 jawaban_4 = mGetLatihan.soal[count].jawaban_4;
                 jawaban_B = mGetLatihan.soal[count].jawaban_benar;
-                scoreLatihan = mGetLatihan.soal[count].point;
-
                 getSoal.text = isiSoal;
-
+                scoreLatihan = mGetLatihan.soal[count].point;
                 FunctionButtonChange(jawaban_1, jawaban_2, jawaban_3, jawaban_4);
+                //FunctionClickedButton(jawaban_1, jawaban_2, jawaban_3, jawaban_4, jawaban_B);
 
-                FunctionClickedButton(jawaban_1, jawaban_2, jawaban_3, jawaban_4, jawaban_B);
             }
             else if (count == arrsize)
             {
@@ -70,6 +71,8 @@ public class ManagerLatihan : MonoBehaviour
             }
         }
     }
+
+   
 
     // Start is called before the first frame update
     void Start()
@@ -94,7 +97,7 @@ public class ManagerLatihan : MonoBehaviour
 
     void Update()
     {
-      
+        
     }
 
     void FunctionButtonChange(string jawaban1, string jawaban2, string jawaban3, string jawaban4)
@@ -113,37 +116,60 @@ public class ManagerLatihan : MonoBehaviour
     void FunctionClickedButton(string jawaban1, string jawaban2, string jawaban3, string jawaban4, string jawabanB)
     {
         stopScript = true;
-        btn1.gameObject.GetComponent<Button>().onClick.AddListener(() => FunctionCheckAnswer(jawaban1, jawabanB, 1));
-        btn2.gameObject.GetComponent<Button>().onClick.AddListener(() => FunctionCheckAnswer(jawaban2, jawabanB, 1));
-        btn3.gameObject.GetComponent<Button>().onClick.AddListener(() => FunctionCheckAnswer(jawaban3, jawabanB, 1));
-        btn4.gameObject.GetComponent<Button>().onClick.AddListener(() => FunctionCheckAnswer(jawaban4, jawabanB, 1));
+        //btn1.gameObject.GetComponent<Button>().onClick.AddListener(() => FunctionCheckAnswer(jawaban1, jawabanB, 1));
+        //btn2.gameObject.GetComponent<Button>().onClick.AddListener(() => FunctionCheckAnswer(jawaban2, jawabanB, 1));
+        //btn3.gameObject.GetComponent<Button>().onClick.AddListener(() => FunctionCheckAnswer(jawaban3, jawabanB, 1));
+        //btn4.gameObject.GetComponent<Button>().onClick.AddListener(() => FunctionCheckAnswer(jawaban4, jawabanB, 1));
+        
     }
 
     public void ButtonJ1()
     {
+        string j1 = jawaban_1;
+        FunctionCheckAnswer(j1, jawaban_B, 1);
+        StartCoroutine(RetriveData());
+    }
+
+    public void ButtonJ2()
+    {
+        string j2 = jawaban_3;
+        FunctionCheckAnswer(j2, jawaban_B, 1);
+        StartCoroutine(RetriveData());
+    }
+
+    public void ButtonJ3()
+    {
+        string j3 = jawaban_2;
+        FunctionCheckAnswer(j3, jawaban_B, 1);
+        StartCoroutine(RetriveData());
+    }
+
+    public void ButtonJ4()
+    {
+        string j4 = jawaban_4;
+        FunctionCheckAnswer(j4, jawaban_B, 1);
         StartCoroutine(RetriveData());
     }
 
 
     void FunctionCheckAnswer(string jawaban, string jawabanBenar, int i)
     {
-        Debug.Log(count);
-
+        Debug.Log(jawaban+" || "+jawabanBenar);
         if (jawaban == jawabanBenar && stopScript == true)
         {
-            getSoal.text = isiSoal;
-            FunctionButtonChange(jawaban_1, jawaban_2, jawaban_3, jawaban_4);
             PostData(id_murid, id_latihan, id_soal, jawaban, scoreLatihan);
             count = count + i;
-            stopScript = false;
+            btnBack.SetActive(false);
+            //stopScript = false;
+            //StartCoroutine(RetriveData());
         }
         else if (jawaban != jawabanBenar && stopScript == true)
         {
-            getSoal.text = isiSoal;
-            FunctionButtonChange(jawaban_1, jawaban_2, jawaban_3, jawaban_4);
             PostData(id_murid, id_latihan, id_soal, jawaban, 0);
             count = count + i;
-            stopScript = false;
+            btnBack.SetActive(false);
+            //stopScript = false;
+            //StartCoroutine(RetriveData());
         }
         else if (count == arrsize)
         {
@@ -161,7 +187,7 @@ public class ManagerLatihan : MonoBehaviour
         dataParameters.AddField("jawaban_murid", jawaban_murid);
         dataParameters.AddField("score_murid", score_murid);
         WWW www = new WWW(url_post, dataParameters);
-        StartCoroutine("PostdataEnumerator", url_post);
+        //StartCoroutine("PostdataEnumerator", url_post);
     }
 
     IEnumerator PostdataEnumerator(WWW www)

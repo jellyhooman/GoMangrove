@@ -87,12 +87,12 @@ public class Main_Button : MonoBehaviour
 
     public void btnNextToNilaiLatihan()
     {
-        Application.LoadLevel("Nilai Latihan Scene");
+        Application.LoadLevel("ListNilaiLatihan");
     }
 
     public void btnNextToNilaiSimulasi()
     {
-        Application.LoadLevel("Nilai Latihan Simulasi");
+        Application.LoadLevel("Nilai Simulasi Scene");
     }
 
     public void btnStart()
@@ -124,4 +124,13 @@ public class Main_Button : MonoBehaviour
         Application.LoadLevel("ListLatihanScene");
     }
 
+    public void btnToLeaderboard()
+    {
+        Application.LoadLevel("LeaderboardScene");
+    }
+
+    public void btnToLogin()
+    {
+        Application.LoadLevel("Login Scene");
+    }
 }

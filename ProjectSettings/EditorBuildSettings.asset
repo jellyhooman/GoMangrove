@@ -36,6 +36,9 @@ EditorBuildSettings:
     path: Assets/Resources/Scenes/ListLatihanScene.unity
     guid: 837cfcf70293a774d90b7f999a39af92
   - enabled: 1
+    path: Assets/Resources/Scenes/LeaderboardScene.unity
+    guid: 13954d587d35aef43b4784a849e786ed
+  - enabled: 1
     path: Assets/Resources/Scenes/ListMateriScene.unity
     guid: 00086922344d0744a92b0470dc0fd307
   - enabled: 1
@@ -44,4 +47,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Resources/Scenes/ListGetMateriScene.unity
     guid: 7daebfb86f3ac9c4899c79fedbb7761d
+  - enabled: 1
+    path: Assets/Resources/Scenes/FailedScene.unity
+    guid: 73e9ad8cecb369d4da2a48c04f025c7d
+  - enabled: 1
+    path: Assets/Resources/Scenes/VictoryScene.unity
+    guid: 9b52219cf0b9a8149b9c1f60c1a57b0c
+  - enabled: 1
+    path: Assets/Resources/Scenes/ListNilaiLatihan.unity
+    guid: 70ab66e628a58a646a47cef90628075e
   m_configObjects: {}
