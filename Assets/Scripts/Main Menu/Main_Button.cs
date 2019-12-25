@@ -92,7 +92,7 @@ public class Main_Button : MonoBehaviour
 
     public void btnNextToNilaiSimulasi()
     {
-        Application.LoadLevel("Nilai Simulasi Scene");
+        Application.LoadLevel("ListNilaiSimulasi");
     }
 
     public void btnStart()
@@ -117,6 +117,12 @@ public class Main_Button : MonoBehaviour
     {
         PlayerPrefs.SetString("id_murid", id_murid);
         Application.LoadLevel("Level1");
+    }
+
+    public void btnToLevel2()
+    {
+        PlayerPrefs.SetString("id_murid", id_murid);
+        Application.LoadLevel("Level2");
     }
 
     public void btnToLatihan()

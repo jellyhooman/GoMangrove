@@ -155,6 +155,20 @@ public class GetLeaderboard
     public List<Leaderboard> getLeaderboard;
 }
 
+[System.Serializable]
+public class PUTNilaiSimulasi
+{
+    public string id_simulasi;
+    public string nama_simulasi;
+    public int score_simulasi;
+
+    public PUTNilaiSimulasi(string id_simulasi, string nama_simulasi, int score_simulasi)
+    {
+        this.id_simulasi = id_simulasi;
+        this.nama_simulasi = nama_simulasi;
+        this.score_simulasi = score_simulasi;
+    }
+}
 
 
 

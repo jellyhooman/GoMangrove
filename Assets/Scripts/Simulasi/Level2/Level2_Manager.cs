@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using LitJson;
+using SimpleHTTP;
 
 public class Level2_Manager : MonoBehaviour
 {
@@ -23,10 +24,26 @@ public class Level2_Manager : MonoBehaviour
     public Text textTimer;
     float timeLeft = 120.0f;
 
+    string statusLevel;
+
+    JsonData stateData;
+
+    GetNilaiSimulasi mGetNilaiSimulasi;
+    string mId_simulasi;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        
+        statusLevel = PlayerPrefs.GetString("status_lvl2");
+        id_murid = PlayerPrefs.GetString("id_murid");
+        
+        Debug.Log("start sim " + mId_simulasi);
+        Debug.Log("start status  " + statusLevel);
+        Debug.Log("start id m" + id_murid);
+
+        StartCoroutine(RetriveData());
         codeKepiting = "codeKepiting";
         codeIkanK = "codeIkanK";
         codeIkanB = "codeIkanB";
@@ -57,7 +74,8 @@ public class Level2_Manager : MonoBehaviour
         textTimer.text = ((timeLeft).ToString("0"));
         if (timeLeft < 0)
         {
-            //Game OVer
+            PlayerPrefs.SetInt("nilai_simulasi", 0);
+            Application.LoadLevel("FailedScene");
         }
     }
 
@@ -202,12 +220,27 @@ public class Level2_Manager : MonoBehaviour
 
     void ClickButtonFinish(int score)
     {
-        PostData(id_murid, "Level Simulasi 2", score);
+        Debug.Log("MASUK");
+        if (statusLevel == "null")
+        {
+            PostData(id_murid, "Level Simulasi 2", score);
+            StateResult(score);
+        }
+        else if (statusLevel == "not_null")
+        {
+            StartCoroutine(Put(mId_simulasi, score));
+            StateResult(score);
+        }
+    }
+
+    void StateResult(int score)
+    {
         if (score > 10)
         {
             PlayerPrefs.SetInt("nilai_simulasi", score);
             Application.LoadLevel("VictoryScene");
-        } else if (score < 10)
+        }
+        else if (score <= 10)
         {
             PlayerPrefs.SetInt("nilai_simulasi", score);
             Application.LoadLevel("FailedScene");
@@ -221,5 +254,57 @@ public class Level2_Manager : MonoBehaviour
         dataParameters.AddField("nama_simulasi", nama_simulasi);
         dataParameters.AddField("score_simulasi", score);
         WWW www = new WWW(Url, dataParameters);
+    }
+
+    IEnumerator Put(string id, int score)
+    {
+        // Let's say that this the object you want to create
+        PUTNilaiSimulasi put = new PUTNilaiSimulasi(id, "Simulasi Level 2", score);
+
+        // Create the request object and use the helper function `RequestBody` to create a body from JSON
+        Request request = new Request("http://gomangrove.com/backend/api/v1/putNilaiSimulasi")
+            .Put(RequestBody.From<PUTNilaiSimulasi>(put));
+
+        // Instantiate the client
+        Client http = new Client();
+        // Send the request
+        yield return http.Send(request);
+
+        // Use the response if the request was successful, otherwise print an error
+        if (http.IsSuccessful())
+        {
+            Response resp = http.Response();
+            Debug.Log("status: " + resp.Status().ToString() + "\nbody: " + resp.Body());
+        }
+        else
+        {
+            Debug.Log("error: " + http.Error());
+        }
+    }
+
+    IEnumerator RetriveData()
+    {
+        string url = "http://gomangrove.com/backend/api/v1/getNilaiSimulasi?id_murid=" + id_murid;
+        WWW www = new WWW(url);
+        yield return www;
+
+        if (www.error == null)
+        {
+            mGetNilaiSimulasi = JsonUtility.FromJson<GetNilaiSimulasi>("{\"nilaiSimulasi\":" + www.text + "}");
+            int array = mGetNilaiSimulasi.nilaiSimulasi.Count;
+            Debug.Log("arrays : "+array);
+            if (array > 1)
+            {
+                mId_simulasi = mGetNilaiSimulasi.nilaiSimulasi[1].id;
+            } else if (array <= 1) {
+
+            }
+            
+            Debug.Log("id simulasi :" + mId_simulasi);
+        }
+        else
+        {
+            Debug.Log("ERROR: " + www.error);
+        }
     }
 }

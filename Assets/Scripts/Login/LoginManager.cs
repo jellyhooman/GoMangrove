@@ -36,10 +36,12 @@ public class LoginManager : MonoBehaviour
             
             bool statusLogin = loginO.login;
             string id_murid = loginO.id;
+            string name = loginO.nama;
             
             if (statusLogin == true)
             {
                 PlayerPrefs.SetString("id_murid", id_murid);
+                PlayerPrefs.SetString("nama_murid", name);
                 Application.LoadLevel("Main Menu");
             }
             else

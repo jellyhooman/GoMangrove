@@ -33,6 +33,7 @@ public class ManagerLatihan : MonoBehaviour
     string jawaban_B;
     int scoreLatihan;
     int finalScore;
+    
     int test = 1;
 
     string url_post = "http://gomangrove.com/backend/api/v1/postNilaiLatihan";
@@ -67,7 +68,16 @@ public class ManagerLatihan : MonoBehaviour
             }
             else if (count == arrsize)
             {
-                Application.LoadLevel("Main Menu");
+                if (finalScore > 20)
+                {
+                    PlayerPrefs.SetInt("nilai_simulasi", finalScore);
+                    Application.LoadLevel("VictoryScene");
+                }
+                else if (finalScore <= 20)
+                {
+                    PlayerPrefs.SetInt("nilai_simulasi", finalScore);
+                    Application.LoadLevel("FailedScene");
+                }
             }
         }
     }
@@ -128,6 +138,7 @@ public class ManagerLatihan : MonoBehaviour
         string j1 = jawaban_1;
         FunctionCheckAnswer(j1, jawaban_B, 1);
         StartCoroutine(RetriveData());
+        Debug.Log("final score :" + finalScore);
     }
 
     public void ButtonJ2()
@@ -135,6 +146,7 @@ public class ManagerLatihan : MonoBehaviour
         string j2 = jawaban_3;
         FunctionCheckAnswer(j2, jawaban_B, 1);
         StartCoroutine(RetriveData());
+        Debug.Log("final score :" + finalScore);
     }
 
     public void ButtonJ3()
@@ -142,6 +154,7 @@ public class ManagerLatihan : MonoBehaviour
         string j3 = jawaban_2;
         FunctionCheckAnswer(j3, jawaban_B, 1);
         StartCoroutine(RetriveData());
+        Debug.Log("final score :" + finalScore);
     }
 
     public void ButtonJ4()
@@ -149,6 +162,7 @@ public class ManagerLatihan : MonoBehaviour
         string j4 = jawaban_4;
         FunctionCheckAnswer(j4, jawaban_B, 1);
         StartCoroutine(RetriveData());
+        Debug.Log("final score :" + finalScore);
     }
 
 
@@ -159,6 +173,7 @@ public class ManagerLatihan : MonoBehaviour
         {
             PostData(id_murid, id_latihan, id_soal, jawaban, scoreLatihan);
             count = count + i;
+            finalScore = finalScore + scoreLatihan;
             btnBack.SetActive(false);
             //stopScript = false;
             //StartCoroutine(RetriveData());
@@ -167,13 +182,23 @@ public class ManagerLatihan : MonoBehaviour
         {
             PostData(id_murid, id_latihan, id_soal, jawaban, 0);
             count = count + i;
+            finalScore = finalScore + 0;
             btnBack.SetActive(false);
             //stopScript = false;
             //StartCoroutine(RetriveData());
         }
         else if (count == arrsize)
         {
-            Application.LoadLevel("Main Menu");
+            if (finalScore > 20)
+            {
+                PlayerPrefs.SetInt("nilai_simulasi", finalScore);
+                Application.LoadLevel("VictoryScene");
+            }
+            else if (finalScore <= 20)
+            {
+                PlayerPrefs.SetInt("nilai_simulasi", finalScore);
+                Application.LoadLevel("FailedScene");
+            }
         }
     }
 

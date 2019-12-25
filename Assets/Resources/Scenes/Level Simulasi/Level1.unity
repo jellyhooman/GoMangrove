@@ -4386,7 +4386,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 331919955}
-        m_MethodName: btnBackToMainMenu
+        m_MethodName: btnToSimulasi
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

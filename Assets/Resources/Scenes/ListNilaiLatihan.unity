@@ -1222,7 +1222,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1126061809}
-        m_MethodName: btnBackToMainMenu
+        m_MethodName: btnNextToAkun
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2109,7 +2109,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7ef6af5295a4a664194f0cf7651f4102, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c2e4df1760b70364dbc85422e6f1b884, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

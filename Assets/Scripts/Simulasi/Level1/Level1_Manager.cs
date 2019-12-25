@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 using LitJson;
+using System.Text;
+using SimpleHTTP;
 
 public class Level1_Manager : MonoBehaviour
 {
@@ -18,15 +21,30 @@ public class Level1_Manager : MonoBehaviour
 
     string codeUlar, codeIkanK, codeIkanB, codeSerasah, codeBurung;
     string Url = "http://gomangrove.com/backend/api/v1/postNilaiSimulasi";
+    string Url_PUT = "http://gomangrove.com/backend/api/v1/putNilaiSimulasi";
     string id_murid;
 
     public Text textTimer;
     float timeLeft = 120.0f;
 
+    string statusLevel;
+
+    JsonData stateData;
+
+    GetNilaiSimulasi mGetNilaiSimulasi;
+    string mId_simulasi;
 
     // Start is called before the first frame update
     void Start()
     {
+        statusLevel = PlayerPrefs.GetString("status_lvl1");
+        id_murid = PlayerPrefs.GetString("id_murid");
+
+        
+        Debug.Log("start " + mId_simulasi);
+        Debug.Log("start " + statusLevel);
+        Debug.Log("start " + id_murid);
+
         codeUlar = "codeUlar";
         codeIkanK = "codeIkanK";
         codeIkanB = "codeIkanB";
@@ -45,7 +63,9 @@ public class Level1_Manager : MonoBehaviour
         btnSelesai.SetActive(true);
         btn.transform.SetParent(btnSelesai.transform.parent, false);
         Finish();
+        StartCoroutine(RetriveData());
     }
+
 
      //Update is called once per frame
     void Update()
@@ -53,9 +73,10 @@ public class Level1_Manager : MonoBehaviour
         hasilScore = scoreUlar + scoreIkanKecil + scoreIkanBesar + scoreSerasah + scoreBurung;
         timeLeft -= Time.deltaTime;
         textTimer.text = ((timeLeft).ToString("0"));
-        if (timeLeft < 0)
+        if (timeLeft <= 0)
         {
-            //Game OVer
+            PlayerPrefs.SetInt("nilai_simulasi", 0);
+            Application.LoadLevel("FailedScene");
         }
         
     }
@@ -181,17 +202,31 @@ public class Level1_Manager : MonoBehaviour
 
     void ClickButtonFinish(int score)
     {
-        PostData(id_murid, "Level Simulasi 1", score);
+        if (statusLevel == "null")
+        {
+            PostData(id_murid, "Level Simulasi 1", score);
+            StateResult(score);
+        }
+        else if (statusLevel == "not_null")
+        {
+            StartCoroutine(Put(mId_simulasi, score));
+            StateResult(score);
+        }
+
+    }
+
+    void StateResult(int score)
+    {
         if (score > 10)
         {
             PlayerPrefs.SetInt("nilai_simulasi", score);
             Application.LoadLevel("VictoryScene");
-        } else if ( score <= 10)
+        }
+        else if (score <= 10)
         {
             PlayerPrefs.SetInt("nilai_simulasi", score);
             Application.LoadLevel("FailedScene");
         }
-        
     }
 
     void PostData(string id_murid, string nama_simulasi, int score)
@@ -201,5 +236,49 @@ public class Level1_Manager : MonoBehaviour
         dataParameters.AddField("nama_simulasi", nama_simulasi);
         dataParameters.AddField("score_simulasi", score);
         WWW www = new WWW(Url, dataParameters);
+    }
+    
+    IEnumerator Put(string id, int score)
+    {
+        // Let's say that this the object you want to create
+        PUTNilaiSimulasi put = new PUTNilaiSimulasi(id, "Simulasi Level 1", score);
+
+        // Create the request object and use the helper function `RequestBody` to create a body from JSON
+        Request request = new Request("http://gomangrove.com/backend/api/v1/putNilaiSimulasi")
+            .Put(RequestBody.From<PUTNilaiSimulasi>(put));
+
+        // Instantiate the client
+        Client http = new Client();
+        // Send the request
+        yield return http.Send(request);
+
+        // Use the response if the request was successful, otherwise print an error
+        if (http.IsSuccessful())
+        {
+            Response resp = http.Response();
+            Debug.Log("status: " + resp.Status().ToString() + "\nbody: " + resp.Body());
+        }
+        else
+        {
+            Debug.Log("error: " + http.Error());
+        }
+    }
+
+    IEnumerator RetriveData()
+    {
+        string url = "http://gomangrove.com/backend/api/v1/getNilaiSimulasi?id_murid=" + id_murid;
+        WWW www = new WWW(url);
+        yield return www;
+
+        if (www.error == null)
+        {
+            mGetNilaiSimulasi = JsonUtility.FromJson<GetNilaiSimulasi>("{\"nilaiSimulasi\":" + www.text + "}");
+            mId_simulasi = mGetNilaiSimulasi.nilaiSimulasi[0].id;
+            Debug.Log("id simulasi :"+mId_simulasi);
+        }
+        else
+        {
+            Debug.Log("ERROR: " + www.error);
+        }
     }
 }
