@@ -34,6 +34,7 @@ public class GameLevel : MonoBehaviour
     {
         id_murid = PlayerPrefs.GetString("id_murid");
         PlayerPrefs.SetString("id_murid", id_murid);
+        Debug.Log(id_murid);
         totalLevel1.text = "/50";
         totalLevel2.text = "/60";
         totalLevel3.text = "/70";
@@ -79,6 +80,7 @@ public class GameLevel : MonoBehaviour
         else
         {
             Debug.Log("ERROR: " + www.error);
+            PlayerPrefs.SetString("status_lvl1", "null");
         }
     }
     

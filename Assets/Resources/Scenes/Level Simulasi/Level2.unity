@@ -204,6 +204,7 @@ GameObject:
   - component: {fileID: 22295396}
   - component: {fileID: 22295398}
   - component: {fileID: 22295397}
+  - component: {fileID: 22295399}
   m_Layer: 5
   m_Name: Drop Ikan Kecil
   m_TagString: c1
@@ -248,7 +249,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 00dc2d99eeafe874a92764c4ead372d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 56993fcce5419e44c8c083948d17f585, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -266,6 +267,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 22295395}
   m_CullTransparentMesh: 0
+--- !u!95 &22295399
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22295395}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 83ecd45f4e827004dbfb9e052b3e7cbe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &40925788
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,7 +820,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &103884860
 GameObject:
@@ -2184,7 +2204,7 @@ RectTransform:
   - {fileID: 514816076}
   - {fileID: 157223392}
   m_Father: {fileID: 2123008554}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3844,7 +3864,7 @@ RectTransform:
   m_Children:
   - {fileID: 1791281575}
   m_Father: {fileID: 2123008554}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -4174,7 +4194,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2123008554}
-  m_RootOrder: 9
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5051,6 +5071,7 @@ GameObject:
   - component: {fileID: 873652012}
   - component: {fileID: 873652014}
   - component: {fileID: 873652013}
+  - component: {fileID: 873652015}
   m_Layer: 5
   m_Name: Drop Biyawak
   m_TagString: c1
@@ -5095,7 +5116,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 00dc2d99eeafe874a92764c4ead372d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 56993fcce5419e44c8c083948d17f585, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5113,6 +5134,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873652011}
   m_CullTransparentMesh: 0
+--- !u!95 &873652015
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873652011}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 83ecd45f4e827004dbfb9e052b3e7cbe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &880667603
 GameObject:
   m_ObjectHideFlags: 0
@@ -6800,6 +6840,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1310881092}
   m_CullTransparentMesh: 0
+--- !u!1 &1318616607
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1318616608}
+  - component: {fileID: 1318616610}
+  - component: {fileID: 1318616609}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1318616608
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318616607}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2123008554}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.5, y: -68.2}
+  m_SizeDelta: {x: 2960.2, y: 1567.8}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1318616609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318616607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1318616610
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318616607}
+  m_CullTransparentMesh: 0
 --- !u!1 &1335369962
 GameObject:
   m_ObjectHideFlags: 0
@@ -7110,6 +7223,7 @@ GameObject:
   - component: {fileID: 1401469482}
   - component: {fileID: 1401469484}
   - component: {fileID: 1401469483}
+  - component: {fileID: 1401469485}
   m_Layer: 5
   m_Name: Drop Dekomposer
   m_TagString: c1
@@ -7154,7 +7268,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 00dc2d99eeafe874a92764c4ead372d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 56993fcce5419e44c8c083948d17f585, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7172,6 +7286,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401469481}
   m_CullTransparentMesh: 0
+--- !u!95 &1401469485
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401469481}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 83ecd45f4e827004dbfb9e052b3e7cbe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1434980262
 GameObject:
   m_ObjectHideFlags: 0
@@ -9258,8 +9391,9 @@ Transform:
   m_Children:
   - {fileID: 1298141986}
   - {fileID: 331919954}
+  - {fileID: 2087913624}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1737721433
 GameObject:
@@ -10094,6 +10228,7 @@ GameObject:
   - component: {fileID: 1889409895}
   - component: {fileID: 1889409897}
   - component: {fileID: 1889409896}
+  - component: {fileID: 1889409898}
   m_Layer: 5
   m_Name: Drop Ikan Besar
   m_TagString: c1
@@ -10138,7 +10273,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 00dc2d99eeafe874a92764c4ead372d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 56993fcce5419e44c8c083948d17f585, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10156,6 +10291,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889409894}
   m_CullTransparentMesh: 0
+--- !u!95 &1889409898
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889409894}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 83ecd45f4e827004dbfb9e052b3e7cbe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1898417687
 GameObject:
   m_ObjectHideFlags: 0
@@ -10310,7 +10464,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1907767885
 GameObject:
@@ -10473,6 +10627,7 @@ GameObject:
   - component: {fileID: 1934778549}
   - component: {fileID: 1934778551}
   - component: {fileID: 1934778550}
+  - component: {fileID: 1934778552}
   m_Layer: 5
   m_Name: Drop Kepiting
   m_TagString: c1
@@ -10517,7 +10672,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 00dc2d99eeafe874a92764c4ead372d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 56993fcce5419e44c8c083948d17f585, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10535,6 +10690,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934778548}
   m_CullTransparentMesh: 0
+--- !u!95 &1934778552
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934778548}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 83ecd45f4e827004dbfb9e052b3e7cbe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1936591235
 GameObject:
   m_ObjectHideFlags: 0
@@ -10546,6 +10720,7 @@ GameObject:
   - component: {fileID: 1936591236}
   - component: {fileID: 1936591238}
   - component: {fileID: 1936591237}
+  - component: {fileID: 1936591239}
   m_Layer: 5
   m_Name: Drop Burung
   m_TagString: c1
@@ -10590,7 +10765,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 00dc2d99eeafe874a92764c4ead372d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 56993fcce5419e44c8c083948d17f585, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10608,6 +10783,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1936591235}
   m_CullTransparentMesh: 0
+--- !u!95 &1936591239
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936591235}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 83ecd45f4e827004dbfb9e052b3e7cbe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1959489364
 GameObject:
   m_ObjectHideFlags: 0
@@ -11344,6 +11538,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f10e2fba2299e64696a5958bec550e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kepitingAnim: {fileID: 1934778552}
+  ikankAnim: {fileID: 22295399}
+  ikanbAnim: {fileID: 1889409898}
+  biyawakAnim: {fileID: 873652015}
+  dekomposerAnim: {fileID: 1401469485}
+  burungAnim: {fileID: 1936591239}
   kepiting: {fileID: 474252399}
   ikanKecil: {fileID: 780081159}
   ikanBesar: {fileID: 369699866}
@@ -11357,6 +11557,7 @@ MonoBehaviour:
   dropDekomposer: {fileID: 1401469481}
   dropBurung: {fileID: 1936591235}
   btnSelesai: {fileID: 701635687}
+  disableAllButton: {fileID: 1318616607}
   textTimer: {fileID: 1791281576}
 --- !u!4 &2087913624
 Transform:
@@ -11365,12 +11566,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087913622}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.24592783, y: -0.120684266, z: 713.7383}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1037.1993, y: -585.0341, z: 9893.988}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_Father: {fileID: 1722372488}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2091605812
 GameObject:
@@ -11630,11 +11831,12 @@ RectTransform:
   - {fileID: 1087958868}
   - {fileID: 1281384722}
   - {fileID: 1840234438}
-  - {fileID: 701635688}
   - {fileID: 406762489}
   - {fileID: 683447578}
+  - {fileID: 1318616608}
+  - {fileID: 701635688}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
