@@ -57,7 +57,7 @@ public class ListNilaiLatihan_Manager : MonoBehaviour
 
     public void OnButtonClick(string id_latihan)
     {
-        PlayerPrefs.SetString("id_latihan", id_latihan);
-        Application.LoadLevel("ExLatihan");
+        //PlayerPrefs.SetString("id_latihan", id_latihan);
+        //Application.LoadLevel("ExLatihan");
     }
 }

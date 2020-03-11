@@ -125,6 +125,12 @@ public class Main_Button : MonoBehaviour
         Application.LoadLevel("Level2");
     }
 
+    public void btnToLevel3()
+    {
+        PlayerPrefs.SetString("id_murid", id_murid);
+        Application.LoadLevel("Level3");
+    }
+
     public void btnToLatihan()
     {
         Application.LoadLevel("ListLatihanScene");

@@ -68,12 +68,12 @@ public class ManagerLatihan : MonoBehaviour
             }
             else if (count == arrsize)
             {
-                if (finalScore > 20)
+                if (finalScore >= 60)
                 {
                     PlayerPrefs.SetInt("nilai_simulasi", finalScore);
                     Application.LoadLevel("VictoryScene");
                 }
-                else if (finalScore <= 20)
+                else if (finalScore <= 59)
                 {
                     PlayerPrefs.SetInt("nilai_simulasi", finalScore);
                     Application.LoadLevel("FailedScene");
@@ -189,12 +189,12 @@ public class ManagerLatihan : MonoBehaviour
         }
         else if (count == arrsize)
         {
-            if (finalScore > 20)
+            if (finalScore > 50)
             {
                 PlayerPrefs.SetInt("nilai_simulasi", finalScore);
                 Application.LoadLevel("VictoryScene");
             }
-            else if (finalScore <= 20)
+            else if (finalScore <= 49)
             {
                 PlayerPrefs.SetInt("nilai_simulasi", finalScore);
                 Application.LoadLevel("FailedScene");

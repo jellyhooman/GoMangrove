@@ -27,7 +27,10 @@ public class GameLevel : MonoBehaviour
     int sLvl1 = -1;
     int sLvl2 = -1;
     int sLvl3 = -1;
-    
+
+    int scorelevel1;
+    int scorelevel2;
+    int scorelevel3;
 
     // Start is called before the first frame update
     void Start()
@@ -35,9 +38,9 @@ public class GameLevel : MonoBehaviour
         id_murid = PlayerPrefs.GetString("id_murid");
         PlayerPrefs.SetString("id_murid", id_murid);
         Debug.Log(id_murid);
-        totalLevel1.text = "/50";
-        totalLevel2.text = "/60";
-        totalLevel3.text = "/70";
+        totalLevel1.text = "/100";
+        totalLevel2.text = "/100";
+        totalLevel3.text = "/100";
         btnLevel2.interactable = false;
         btnLevel3.interactable = false;
         StartCoroutine(RetriveData());
@@ -54,28 +57,28 @@ public class GameLevel : MonoBehaviour
             mGetNilaiSimulasi = JsonUtility.FromJson<GetNilaiSimulasi>("{\"nilaiSimulasi\":" + www.text + "}");
             int array = mGetNilaiSimulasi.nilaiSimulasi.Count;
 
-            
-                sLvl1 = mGetNilaiSimulasi.nilaiSimulasi[0].score_simulasi;
-                ConditionLevel1(sLvl1);
-                TextLevel(sLvl1, text_Level1);
-                StatusVariableL1(sLvl1);
-                StatusVariableL2(sLvl2);
-                StatusVariableL3(sLvl3);
-            
-                sLvl2 = mGetNilaiSimulasi.nilaiSimulasi[1].score_simulasi;
-                ConditionLevel2(sLvl2);
-                TextLevel(sLvl2, text_Level2);
-                StatusVariableL1(sLvl1);
-                StatusVariableL2(sLvl2);
-                StatusVariableL3(sLvl3);
-            
-                sLvl3 = mGetNilaiSimulasi.nilaiSimulasi[2].score_simulasi;
-                ConditionLevel3(sLvl3);
-                TextLevel(sLvl3, text_Level3);
-                StatusVariableL1(sLvl1);
-                StatusVariableL2(sLvl2);
-                StatusVariableL3(sLvl3);
-            
+            scorelevel1 = mGetNilaiSimulasi.nilaiSimulasi[0].score_simulasi;
+            sLvl1 = mGetNilaiSimulasi.nilaiSimulasi[0].score_simulasi;
+            ConditionLevel1(sLvl1);
+            TextLevel(sLvl1, text_Level1);
+            StatusVariableL1(sLvl1);
+            StatusVariableL2(sLvl2);
+            StatusVariableL3(sLvl3);
+
+            scorelevel2 = mGetNilaiSimulasi.nilaiSimulasi[1].score_simulasi;
+            sLvl2 = mGetNilaiSimulasi.nilaiSimulasi[1].score_simulasi;
+            ConditionLevel2(sLvl2);
+            TextLevel(sLvl2, text_Level2);
+            StatusVariableL1(sLvl1);
+            StatusVariableL2(sLvl2);
+            StatusVariableL3(sLvl3);
+
+            scorelevel3 = mGetNilaiSimulasi.nilaiSimulasi[2].score_simulasi;
+            sLvl3 = mGetNilaiSimulasi.nilaiSimulasi[2].score_simulasi;
+            TextLevel(sLvl3, text_Level3);
+            StatusVariableL1(sLvl1);
+            StatusVariableL2(sLvl2);
+            StatusVariableL3(sLvl3);
         }
         else
         {
@@ -86,14 +89,16 @@ public class GameLevel : MonoBehaviour
     
     void StatusVariableL1(int score1)
     {
-        if (score1 == null || score1 < 0)
+        if (score1 < 0 || score1 == null)
         {
             PlayerPrefs.SetString("status_lvl1", "null");
+            PlayerPrefs.SetInt("nilai_lvl1", scorelevel1);
             Debug.Log("state null");
         }
         else if (score1 >= 0)
         {
             PlayerPrefs.SetString("status_lvl1", "not_null");
+            PlayerPrefs.SetInt("nilai_lvl1", scorelevel1);
             Debug.Log("state not_null");
         }
     }
@@ -103,11 +108,13 @@ public class GameLevel : MonoBehaviour
         if (score2 == null || score2 < 0)
         {
             PlayerPrefs.SetString("status_lvl2", "null");
+            PlayerPrefs.SetInt("nilai_lvl2", scorelevel2);
             Debug.Log("state null");
         }
         else if (score2 >= 0)
         {
             PlayerPrefs.SetString("status_lvl2", "not_null");
+            PlayerPrefs.SetInt("nilai_lvl2", scorelevel2);
             Debug.Log("state not_null");
         }
     }
@@ -117,11 +124,13 @@ public class GameLevel : MonoBehaviour
         if (score3 == null || score3 < 0)
         {
             PlayerPrefs.SetString("status_lvl3", "null");
+            PlayerPrefs.SetInt("nilai_lvl3", scorelevel3);
             Debug.Log("state null");
         }
         else if (score3 >= 0)
         {
             PlayerPrefs.SetString("status_lvl3", "not_null");
+            PlayerPrefs.SetInt("nilai_lvl3", scorelevel3);
             Debug.Log("state not_null");
         }
     }
@@ -154,7 +163,7 @@ public class GameLevel : MonoBehaviour
 
     void ConditionLevel1(int score1)
     {
-        if (score1 <= 10 || score1 == null)
+        if (score1 <= 59 || score1 == null)
         {
             btnLevel2.interactable = false;
             btnLevel3.interactable = false;
@@ -167,7 +176,7 @@ public class GameLevel : MonoBehaviour
 
     void ConditionLevel2(int score2)
     {
-        if (score2 <= 10 || score2 == null)
+        if (score2 <= 59 || score2 == null)
         {
             btnLevel3.interactable = false;
         }
@@ -179,7 +188,7 @@ public class GameLevel : MonoBehaviour
 
     void ConditionLevel3(int score3)
     {
-       
+
     }
 
     public void BtnLevel2()

@@ -5,34 +5,37 @@ using UnityEngine.UI;
 using LitJson;
 using SimpleHTTP;
 
-public class Level2_Manager : MonoBehaviour
+
+public class Level3_Manager : MonoBehaviour
 {
     string CHECK_TRUE = "check_true";
     string CHECK_FALSE = "check_false";
 
-    public Animator kepitingAnim, ikankAnim, ikanbAnim, biyawakAnim, dekomposerAnim, burungAnim;
+    public Animator kepitingAnim, ikankAnim, ikanbAnim, biyawakAnim, elangAnim, burungAnim, siputAnim, nelayanAnim, ularAnim;
 
-    public GameObject kepiting, ikanKecil, ikanBesar, biyawak, dekomposer, burung;
-    public GameObject dropKepiting, dropIkanKecil, dropIkanBesar, dropBiyawak, dropDekomposer, dropBurung;
+    public GameObject kepiting, ikanKecil, ikanBesar, biyawak, elang, burung, siput, nelayan, ular;
+    public GameObject dropKepiting, dropIkanKecil, dropIkanBesar, dropBiyawak, dropElang, dropBurung, dropSiput, dropNelayan, dropUlar;
     public GameObject btnSelesai, btnDone;
     public GameObject disableAllButton;
     GameObject btn, btnS;
 
-    Vector2 kepitingInitialPos, ikanKecilInitialPos, ikanBesarInitialPos, biyawakInitialPos, dekomposerInitialPos, burungInitialPos;
+    Vector2 kepitingInitialPos, ikanKecilInitialPos, ikanBesarInitialPos, biyawakInitialPos, elangInitialPos, burungInitialPos, siputInitialPos, nelayanInitialPos, ularInitialPos;
 
-    int scorekepiting, scoreIkanKecil, scoreIkanBesar, scoreBiyawak, scoreDekomposer, scoreBurung = 0;
+    int scorekepiting, scoreIkanKecil, scoreIkanBesar, scoreBiyawak, scoreElang, scoreBurung, scoreSiput, scoreNelayan, scoreUlar = 0;
     int hasilScore;
-    float scoreSoal = 16.666667f;
+    int scoreSoal = 10;
 
-    string codeKepiting, codeIkanK, codeIkanB, codeBiyawak, codeDekomposer, codeBurung;
-    string checkAnswerKepiting, checkAnswerIkanK, checkAnswerIkanB, checkAnswerBiyawak, checkAnswerBurung, checkAnswerDekomposer, checkAnswer;
-    string answerKepiting, answerIkanK, answerIkanB, answerDekomposer, answerBurung, answerBiyawak;
+    string codeKepiting, codeIkanK, codeIkanB, codeBiyawak, codeElang, codeBurung, codeSiput, codeNelayan, codeUlar;
+    string checkAnswerKepiting, checkAnswerIkanK, checkAnswerIkanB, checkAnswerBiyawak, checkAnswerBurung, checkAnswerElang, checkAnswerSiput, checkAnswerNelayan, checkAnswerUlar, checkAnswer;
+    string answerKepiting, answerIkanK, answerIkanB, answerElang, answerBurung, answerBiyawak, answerSiput, answerNelayan, answerUlar;
     int statAnswer;
 
     string Url = "http://gomangrove.com/backend/api/v1/postNilaiSimulasi";
     string id_murid;
 
     public Text textTimer;
+
+    //+time 1.30f
     float timeLeft = 120.0f;
     float targetTime1 = 1f;
     float targetTime2 = 2.30f;
@@ -40,6 +43,9 @@ public class Level2_Manager : MonoBehaviour
     float targetTime4 = 4.90f;
     float targetTime5 = 6.20f;
     float targetTime6 = 7.50f;
+    float targetTime7 = 8.80f;
+    float targetTime8 = 10.10f;
+    float targetTime9 = 11.40f;
     bool timerIsActive = true;
     int allFinished = 0;
 
@@ -49,23 +55,26 @@ public class Level2_Manager : MonoBehaviour
 
     GetNilaiSimulasi mGetNilaiSimulasi;
     string mId_simulasi;
-    int scorelevel2;
+    int scorelevel3;
 
     // Start is called before the first frame update
     void Start()
     {
         disableAllButton.SetActive(false);
 
-        statusLevel = PlayerPrefs.GetString("status_lvl2");
+        statusLevel = PlayerPrefs.GetString("status_lvl3");
         id_murid = PlayerPrefs.GetString("id_murid");
-        scorelevel2 = PlayerPrefs.GetInt("nilai_lvl2");
+        scorelevel3 = PlayerPrefs.GetInt("nilai_lvl3");
 
         kepitingAnim = dropKepiting.GetComponent<Animator>();
         burungAnim = dropBurung.GetComponent<Animator>();
         ikanbAnim = dropIkanBesar.GetComponent<Animator>();
         ikankAnim = dropIkanKecil.GetComponent<Animator>();
-        dekomposerAnim = dropDekomposer.GetComponent<Animator>();
+        elangAnim = dropElang.GetComponent<Animator>();
         biyawakAnim = dropBiyawak.GetComponent<Animator>();
+        siputAnim = dropSiput.GetComponent<Animator>();
+        nelayanAnim = dropNelayan.GetComponent<Animator>();
+        ularAnim = dropUlar.GetComponent<Animator>();
 
         Debug.Log("start sim " + mId_simulasi);
         Debug.Log("start status  " + statusLevel);
@@ -76,23 +85,32 @@ public class Level2_Manager : MonoBehaviour
         codeIkanK = "codeIkanK";
         codeIkanB = "codeIkanB";
         codeBiyawak = "codeBiyawak";
-        codeDekomposer = "codeDekomposer";
+        codeElang = "codeElang";
         codeBurung = "codeBurung";
+        codeSiput = "codeSiput";
+        codeNelayan = "codeNelayan";
+        codeUlar = "codeUlar";
 
         answerKepiting = "check_kepiting";
         answerIkanK = "check_ikank";
         answerIkanB = "check_ikanb";
-        answerDekomposer = "check_dekomposer";
+        answerElang = "check_elang";
         answerBurung = "check_burung";
         answerBiyawak = "check_biyawak";
+        answerSiput = "check_siput";
+        answerNelayan = "check_nelayan";
+        answerUlar = "check_ular";
         statAnswer = 0;
 
         kepitingInitialPos = kepiting.transform.position;
         ikanKecilInitialPos = ikanKecil.transform.position;
         ikanBesarInitialPos = ikanBesar.transform.position;
         biyawakInitialPos = biyawak.transform.position;
-        dekomposerInitialPos = dekomposer.transform.position;
+        elangInitialPos = elang.transform.position;
         burungInitialPos = burung.transform.position;
+        siputInitialPos = siput.transform.position;
+        nelayanInitialPos = nelayan.transform.position;
+        ularInitialPos = ular.transform.position;
 
         id_murid = PlayerPrefs.GetString("id_murid");
 
@@ -110,7 +128,7 @@ public class Level2_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        hasilScore = scorekepiting + scoreIkanKecil + scoreIkanBesar + scoreBiyawak + scoreDekomposer + scoreBurung;
+        hasilScore = scorekepiting + scoreIkanKecil + scoreIkanBesar + scoreBiyawak + scoreElang + scoreBurung + scoreSiput + scoreNelayan + scoreUlar;
 
         if (timerIsActive)
         {
@@ -124,13 +142,16 @@ public class Level2_Manager : MonoBehaviour
         }
         else if (statAnswer == 1)
         {
-            
+
             string answer_1 = "check_kepiting";
             string answer_2 = "check_ikank";
             string answer_3 = "check_ikanb";
-            string answer_4 = "check_dekomposer";
+            string answer_4 = "check_elang";
             string answer_5 = "check_burung";
             string answer_6 = "check_biyawak";
+            string answer_7 = "check_siput";
+            string answer_8 = "check_nelayan";
+            string answer_9 = "check_ular";
 
             targetTime1 -= Time.deltaTime;
             targetTime2 -= Time.deltaTime;
@@ -138,7 +159,10 @@ public class Level2_Manager : MonoBehaviour
             targetTime4 -= Time.deltaTime;
             targetTime5 -= Time.deltaTime;
             targetTime6 -= Time.deltaTime;
-            
+            targetTime7 -= Time.deltaTime;
+            targetTime8 -= Time.deltaTime;
+            targetTime9 -= Time.deltaTime;
+
 
             if (targetTime1 <= 0.0f)
             {
@@ -153,22 +177,37 @@ public class Level2_Manager : MonoBehaviour
             else if (targetTime3 <= 0.0f)
             {
                 targetTime3 = 9999999999f;
-                InitialCheckAnswer(answer_4, checkAnswerDekomposer, CHECK_TRUE, CHECK_FALSE, dekomposerAnim);
+                InitialCheckAnswer(answer_2, checkAnswerIkanK, CHECK_TRUE, CHECK_FALSE, ikankAnim);
             }
             else if (targetTime4 <= 0.0f)
             {
                 targetTime4 = 9999999999f;
-                InitialCheckAnswer(answer_2, checkAnswerIkanK, CHECK_TRUE, CHECK_FALSE, ikankAnim);
+                InitialCheckAnswer(answer_7, checkAnswerSiput, CHECK_TRUE, CHECK_FALSE, siputAnim);
             }
             else if (targetTime5 <= 0.0f)
             {
                 targetTime5 = 9999999999f;
-                InitialCheckAnswer(answer_3, checkAnswerIkanB, CHECK_TRUE, CHECK_FALSE, ikanbAnim);
+                InitialCheckAnswer(answer_9, checkAnswerUlar, CHECK_TRUE, CHECK_FALSE, ularAnim);
             }
             else if (targetTime6 <= 0.0f)
             {
                 targetTime6 = 9999999999f;
+                InitialCheckAnswer(answer_3, checkAnswerIkanB, CHECK_TRUE, CHECK_FALSE, ikanbAnim);
+            }
+            else if (targetTime7 <= 0.0f)
+            {
+                targetTime7 = 9999999999f;
                 InitialCheckAnswer(answer_5, checkAnswerBurung, CHECK_TRUE, CHECK_FALSE, burungAnim);
+            }
+            else if (targetTime8 <= 0.0f)
+            {
+                targetTime8 = 9999999999f;
+                InitialCheckAnswer(answer_8, checkAnswerNelayan, CHECK_TRUE, CHECK_FALSE, nelayanAnim);
+            }
+            else if (targetTime9 <= 0.0f)
+            {
+                targetTime9 = 9999999999f;
+                InitialCheckAnswer(answer_4, checkAnswerElang, CHECK_TRUE, CHECK_FALSE, elangAnim);
                 allFinished = 1;
             }
         }
@@ -206,15 +245,31 @@ public class Level2_Manager : MonoBehaviour
         biyawak.transform.position = Input.mousePosition;
     }
 
-    public void DragDekomposer()
+    public void DragElang()
     {
-        dekomposer.transform.position = Input.mousePosition;
+        elang.transform.position = Input.mousePosition;
     }
 
     public void DragBurung()
     {
         burung.transform.position = Input.mousePosition;
     }
+
+    public void DragSiput()
+    {
+        siput.transform.position = Input.mousePosition;
+    }
+
+    public void DragNelayan()
+    {
+        nelayan.transform.position = Input.mousePosition;
+    }
+
+    public void DragUlar()
+    {
+        ular.transform.position = Input.mousePosition;
+    }
+
 
     void RawScore(string initial, int value, string checkAnswer)
     {
@@ -238,27 +293,45 @@ public class Level2_Manager : MonoBehaviour
             scoreBiyawak = value;
             checkAnswerBiyawak = checkAnswer;
         }
-        else if (initial == codeDekomposer)
+        else if (initial == codeElang)
         {
-            scoreDekomposer = value;
-            checkAnswerDekomposer = checkAnswer;
+            scoreElang = value;
+            checkAnswerElang = checkAnswer;
         }
         else if (initial == codeBurung)
         {
             scoreBurung = value;
             checkAnswerBurung = checkAnswer;
         }
+        else if (initial == codeSiput)
+        {
+            scoreSiput = value;
+            checkAnswerSiput = checkAnswer;
+        }
+        else if (initial == codeNelayan)
+        {
+            scoreNelayan = value;
+            checkAnswerNelayan = checkAnswer;
+        }
+        else if (initial == codeUlar)
+        {
+            scoreUlar = value;
+            checkAnswerUlar = checkAnswer;
+        }
     }
 
-    void RawDropObject(Vector2 initialVector, GameObject initial, string codeName, int scoreKepiting, int scoreIkanK, int scoreIkanB, int scoreBiyawak, int scoreDekomposer, int scoreBurung,
-        string checkKepiting, string checkIkanK, string checkIkanB, string checkBiyawak, string checkDekomposer, string checkBurung)
+    void RawDropObject(Vector2 initialVector, GameObject initial, string codeName, int scoreKepiting, int scoreIkanK, int scoreIkanB, int scoreBiyawak, int scoreElang, int scoreBurung, int scoreSiput, int scoreNelayan, int scoreUlar,
+        string checkKepiting, string checkIkanK, string checkIkanB, string checkBiyawak, string checkElang, string checkBurung, string checkSiput, string checkNelayan, string checkUlar)
     {
         float Distance1 = Vector3.Distance(initial.transform.position, dropKepiting.transform.position);
         float Distance2 = Vector3.Distance(initial.transform.position, dropIkanKecil.transform.position);
         float Distance3 = Vector3.Distance(initial.transform.position, dropIkanBesar.transform.position);
         float Distance4 = Vector3.Distance(initial.transform.position, dropBiyawak.transform.position);
-        float Distance5 = Vector3.Distance(initial.transform.position, dropDekomposer.transform.position);
+        float Distance5 = Vector3.Distance(initial.transform.position, dropElang.transform.position);
         float Distance6 = Vector3.Distance(initial.transform.position, dropBurung.transform.position);
+        float Distance7 = Vector3.Distance(initial.transform.position, dropSiput.transform.position);
+        float Distance8 = Vector3.Distance(initial.transform.position, dropNelayan.transform.position);
+        float Distance9 = Vector3.Distance(initial.transform.position, dropUlar.transform.position);
 
         if (Distance1 < 50)
         {
@@ -283,13 +356,28 @@ public class Level2_Manager : MonoBehaviour
         }
         else if (Distance5 < 50)
         {
-            initial.transform.position = dropDekomposer.transform.position;
-            RawScore(codeName, scoreDekomposer, checkDekomposer);
+            initial.transform.position = dropElang.transform.position;
+            RawScore(codeName, scoreElang, checkElang);
         }
         else if (Distance6 < 50)
         {
             initial.transform.position = dropBurung.transform.position;
             RawScore(codeName, scoreBurung, checkBurung);
+        }
+        else if (Distance7 < 50)
+        {
+            initial.transform.position = dropSiput.transform.position;
+            RawScore(codeName, scoreSiput, checkSiput);
+        }
+        else if (Distance8 < 50)
+        {
+            initial.transform.position = dropNelayan.transform.position;
+            RawScore(codeName, scoreNelayan, checkNelayan);
+        }
+        else if (Distance9 < 50)
+        {
+            initial.transform.position = dropUlar.transform.position;
+            RawScore(codeName, scoreUlar, checkUlar);
         }
         else
         {
@@ -299,32 +387,47 @@ public class Level2_Manager : MonoBehaviour
 
     public void DropKepiting()
     {
-        RawDropObject(kepitingInitialPos, kepiting, codeKepiting, 20, 0, 0, 0, 0, 0, answerKepiting, "", "", "", "", "");
+        RawDropObject(kepitingInitialPos, kepiting, codeKepiting, scoreSoal, 0, 0, 0, 0, 0, 0, 0, 0, answerKepiting, "", "", "", "", "", "", "", "");
     }
 
     public void DropIkanKecil()
     {
-        RawDropObject(ikanKecilInitialPos, ikanKecil, codeIkanK, 0, 20, 0, 0, 0, 0, "", answerIkanK, "", "", "", "");
+        RawDropObject(ikanKecilInitialPos, ikanKecil, codeIkanK, 0, 30, 0, 0, 0, 0, 0, 0, 0, "", answerIkanK, "", "", "", "", "", "", "");
     }
 
     public void DropIkanBesar()
     {
-        RawDropObject(ikanBesarInitialPos, ikanBesar, codeIkanB, 0, 0, 10, 0, 0, 0, "", "", answerIkanB, "", "", "");
+        RawDropObject(ikanBesarInitialPos, ikanBesar, codeIkanB, 0, 0, scoreSoal, 0, 0, 0, 0,0, 0, "", "", answerIkanB, "", "", "", "", "", "");
     }
 
     public void DropBiyawak()
     {
-        RawDropObject(biyawakInitialPos, biyawak, codeBiyawak, 0, 0, 0, 20, 0, 0, "", "", "", answerBiyawak, "", "");
+        RawDropObject(biyawakInitialPos, biyawak, codeBiyawak, 0, 0, 0, scoreSoal, 0, 0, 0, 0, 0, "", "", "", answerBiyawak, "", "", "", "", "");
     }
 
-    public void DropDekomposer()
+    public void DropElang()
     {
-        RawDropObject(dekomposerInitialPos, dekomposer, codeDekomposer, 0, 0, 0, 0, 20, 0, "", "", "", "", answerDekomposer, "");
+        RawDropObject(elangInitialPos, elang, codeElang, 0, 0, 0, 0, scoreSoal, 0, 0, 0, 0, "", "", "", "", answerElang, "", "", "", "");
     }
 
     public void DropBurung()
     {
-        RawDropObject(burungInitialPos, burung, codeBurung, 0, 0, 0, 0, 0, 10, "", "", "", "", "", answerBurung);
+        RawDropObject(burungInitialPos, burung, codeBurung, 0, 0, 0, 0, 0, scoreSoal, 0, 0, 0, "", "", "", "", "", answerBurung, "", "", "");
+    }
+
+    public void DropSiput()
+    {
+        RawDropObject(siputInitialPos, siput, codeSiput, 0, 0, 0, 0, 0, 0, scoreSoal, 0, 0, "", "", "", "", "", "", answerSiput, "", "");
+    }
+
+    public void DropNelayan()
+    {
+        RawDropObject(nelayanInitialPos, nelayan, codeNelayan, 0, 0, 0, 0, 0, 0, 0, scoreSoal, 0, "", "", "", "", "", "", "", answerNelayan, "");
+    }
+
+    public void DropUlar()
+    {
+        RawDropObject(ularInitialPos, ular, codeUlar, 0, 0, 0, 0, 0, 0, 0, 0, scoreSoal, "", "", "", "", "", "", "", "", answerUlar);
     }
 
     public void Finish()
@@ -347,16 +450,16 @@ public class Level2_Manager : MonoBehaviour
         {
             if (statusLevel == "null")
             {
-                PostData(id_murid, "Level Simulasi 2", score);
+                PostData(id_murid, "Level Simulasi 3", score);
                 StateResult(score);
             }
             else if (statusLevel == "not_null")
             {
-                if (score < scorelevel2)
+                if (score < scorelevel3)
                 {
                     StateResult(score);
                 }
-                else if (score >= scorelevel2)
+                else if (score >= scorelevel3)
                 {
                     StartCoroutine(Put(mId_simulasi, score));
                     StateResult(score);
@@ -391,7 +494,7 @@ public class Level2_Manager : MonoBehaviour
     IEnumerator Put(string id, int score)
     {
         // Let's say that this the object you want to create
-        PUTNilaiSimulasi put = new PUTNilaiSimulasi(id, "Simulasi Level 2", score);
+        PUTNilaiSimulasi put = new PUTNilaiSimulasi(id, "Simulasi Level 3", score);
 
         // Create the request object and use the helper function `RequestBody` to create a body from JSON
         Request request = new Request("http://gomangrove.com/backend/api/v1/putNilaiSimulasi")
@@ -424,14 +527,16 @@ public class Level2_Manager : MonoBehaviour
         {
             mGetNilaiSimulasi = JsonUtility.FromJson<GetNilaiSimulasi>("{\"nilaiSimulasi\":" + www.text + "}");
             int array = mGetNilaiSimulasi.nilaiSimulasi.Count;
-            Debug.Log("arrays : "+array);
-            if (array > 1)
+            Debug.Log("arrays : " + array);
+            if (array > 2)
             {
-                mId_simulasi = mGetNilaiSimulasi.nilaiSimulasi[1].id;
-            } else if (array <= 1) {
+                mId_simulasi = mGetNilaiSimulasi.nilaiSimulasi[2].id;
+            }
+            else if (array <= 2)
+            {
 
             }
-            
+
             Debug.Log("id simulasi :" + mId_simulasi);
         }
         else

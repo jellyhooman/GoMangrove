@@ -16,9 +16,9 @@ public class Level1_Manager : MonoBehaviour
 
     public GameObject ular, ikanKecil, ikanBesar, serasah, burung;
     public GameObject dropUlar, dropIkanKecil, dropIkanBesar, dropSerasah, dropBurung;
-    public GameObject btnSelesai;
+    public GameObject btnSelesai, btnDone;
     public GameObject disableAllButton;
-    GameObject btn;
+    GameObject btn, btnS;
 
     Vector2 ularInitialPos, ikanKecilInitialPos, ikanBesarInitialPos, serasahInitialPos, burungInitialPos;
 
@@ -56,6 +56,7 @@ public class Level1_Manager : MonoBehaviour
     string mId_simulasi;
 
     public GameObject[] objs;
+    int scorelevel1;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +64,7 @@ public class Level1_Manager : MonoBehaviour
         disableAllButton.SetActive(false);
         statusLevel = PlayerPrefs.GetString("status_lvl1");
         id_murid = PlayerPrefs.GetString("id_murid");
+        scorelevel1 = PlayerPrefs.GetInt("nilai_lvl1");
 
         ularAnim = dropUlar.GetComponent<Animator>();
         burungAnim = dropBurung.GetComponent<Animator>();
@@ -98,6 +100,11 @@ public class Level1_Manager : MonoBehaviour
         btn = Instantiate(btnSelesai) as GameObject;
         btnSelesai.SetActive(true);
         btn.transform.SetParent(btnSelesai.transform.parent, false);
+
+        btnS = Instantiate(btnDone) as GameObject;
+        btnDone.SetActive(false);
+        btnS.transform.SetParent(btnDone.transform.parent, false);
+
         Finish();
         StartCoroutine(RetriveData());
     }
@@ -119,7 +126,7 @@ public class Level1_Manager : MonoBehaviour
         }
         else if (statAnswer == 1)
         {
-            allFinished = 1;
+            
             string answer_1 = "check_ular";
             string answer_2 = "check_ikank";
             string answer_3 = "check_ikanb";
@@ -131,8 +138,6 @@ public class Level1_Manager : MonoBehaviour
             targetTime3 -= Time.deltaTime;
             targetTime4 -= Time.deltaTime;
             targetTime5 -= Time.deltaTime;
-
-            Debug.Log("waktu : " + targetTime1);
 
             if (targetTime1 <= 0.0f)
             {
@@ -158,6 +163,7 @@ public class Level1_Manager : MonoBehaviour
             {
                 targetTime5 = 9999999999f;
                 InitialCheckAnswer(answer_4, checkAnswerSerasah, CHECK_TRUE, CHECK_FALSE, serasahAnim);
+                allFinished = 1;
             }
         }
         
@@ -295,17 +301,22 @@ public class Level1_Manager : MonoBehaviour
     }
 
     public void Finish()
-    {
-        
+    {  
         btn.gameObject.GetComponent<Button>().onClick.AddListener(() => ClickButtonFinish(hasilScore));
+        btnS.gameObject.GetComponent<Button>().onClick.AddListener(() => ClickButtonDone(hasilScore));
     }
 
     void ClickButtonFinish(int score)
     {
+        btn.SetActive(false);
         statAnswer = 1;
         timeLeft = 0;
         timerIsActive = false;
         disableAllButton.SetActive(true);
+    }
+
+    void ClickButtonDone(int score)
+    {
         if (allFinished == 1)
         {
             if (statusLevel == "null")
@@ -315,20 +326,27 @@ public class Level1_Manager : MonoBehaviour
             }
             else if (statusLevel == "not_null")
             {
-                StartCoroutine(Put(mId_simulasi, score));
-                StateResult(score);
+                if (score < scorelevel1)
+                {
+                    StateResult(score);
+                }
+                else if (score >= scorelevel1)
+                {
+                    StartCoroutine(Put(mId_simulasi, score));
+                    StateResult(score);
+                }
             }
         }
     }
 
     void StateResult(int score)
     {
-        if (score > 50)
+        if (score >= 60)
         {
             PlayerPrefs.SetInt("nilai_simulasi", score);
             Application.LoadLevel("VictoryScene");
         }
-        else if (score <= 50)
+        else if (score <= 59)
         {
             PlayerPrefs.SetInt("nilai_simulasi", score);
             Application.LoadLevel("FailedScene");
